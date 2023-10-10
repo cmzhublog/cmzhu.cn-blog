@@ -11,8 +11,6 @@ dateCreated: 2023-01-06T08:39:10.029Z
 # helm 学习
 - [helm](/k8s/helm工具/helm)
 
-{.links-list}
-
 ## helm 模板学习
 - [helm模板入门](/k8s/helm工具/helm模板入门)
 - [helm内置对象](/k8s/helm工具/helm模板/helm内置对象)
@@ -23,5 +21,3 @@ dateCreated: 2023-01-06T08:39:10.029Z
 - [命名模板](/k8s/helm工具/helm模板/命名模板)
 - [在模板内部访问文件](/k8s/helm工具/helm模板/在模板内部访问文件)
 - [子chart和全局值](/k8s/helm工具/helm模板/子chart和全局值)
-
-{.links-list}

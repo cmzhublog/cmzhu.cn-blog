@@ -28,7 +28,7 @@ trivy image <dockerhub.cmzhu.cn:5000/aipaas-devops/userbox-config-manager:master
 
 扫描镜像漏洞
 
-<img src="/image/10.png" alt="image-20221108100142280" style="zoom:25%;" />
+![10](./trivy.assets/10.png)
 
 
 

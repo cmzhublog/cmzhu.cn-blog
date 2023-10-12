@@ -14,13 +14,13 @@ dateCreated: 2023-04-03T08:24:22.675Z
 
 　　首先，进入系统安装选择界面。
 
-![win1101.png](/image/win/win1101.png)
+![win1101](./win11开机时跳过联网.assets/win1101.png)
 
 进入后，键盘按住`shift+F10`，弹出`cmd`命令框，然后输入**`OOBE\BYPASSNRO`**回车。
 ```bash
 OOBE\BYPASSNRO
 ```
 
-![win1102.png](/image/win/win1102.png)
+![win1102](./win11开机时跳过联网.assets/win1102.png)
 
 　　等待系统重启，在提示联网界面选择【我没有Internet连接】.

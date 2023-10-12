@@ -18,7 +18,7 @@ dateCreated: 2022-11-02T03:29:22.784Z
 
 ## 示例
 
-![image-page-admin.png](/image/image-page-admin.png)
+![image-page-admin](./static页面处理.assets/image-page-admin.png)
 
 ## 源码分析
 

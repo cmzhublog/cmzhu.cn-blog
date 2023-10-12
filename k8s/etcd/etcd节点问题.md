@@ -20,10 +20,10 @@ dateCreated: 2023-02-13T02:35:38.609Z
 
 1、 集群db_size 值超过额定的限制; (DB SIZE 默认最大为2GB)
 
-![1.png](/image/etcd/1.png)
+![1](./etcd节点问题.assets/1.png)
 
 2、 在etcd 操作扩容DB SIZE 之后, 出现etcd 集群数据不同步问题, slave 节点的DB SIZE 比master 的DB SIZE 大;
-![2.png](/image/etcd/2.png)
+<img src="./etcd节点问题.assets/2.png" alt="2" style="zoom:67%;" />
 
 
 
@@ -113,7 +113,7 @@ etcdctl --endpoints=$ENDPOINTS  \
 
 ```
 
-![3.png](/image/etcd/3.png)
+![3](./etcd节点问题.assets/3.png)
 
 
 

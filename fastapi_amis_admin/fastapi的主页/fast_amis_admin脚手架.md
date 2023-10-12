@@ -14,4 +14,3 @@ dateCreated: 2022-11-02T02:36:54.718Z
 - [PageAamin](/fastapi_amis_admin/PageAamin)
 - [static页面处理](/fastapi_amis_admin/fastapi的主页/static页面处理)
 - [数据接入方式](/fastapi_amis_admin/fastapi的主页/数据接入方式)
-{.links-list}

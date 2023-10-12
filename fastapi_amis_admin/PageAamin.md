@@ -108,7 +108,7 @@ async def get_page(self, request: Request) -> Page:
 ```
 
 这里非常适合fastapiamis 的配置,功能是在page 上显示出对应的组件;这些配置都是在fastapi_amis_admin 的源码中可以找到(fastapi_amis_admin/amis/components.py)
- 
+
  用法例如下方代码.
 ```
         button = Button(type="button", label="新增配置", actionType="dialog", level="info", dialog=await self.get_colume_dialog())
@@ -275,7 +275,7 @@ class Page(AmisNode):
 [page组件]: https://aisuda.bce.baidu.com/amis/zh-CN/components/page
 
 
-<img src="/image/image-page-admin.png" alt="image-page-admin" style="zoom:50%;" />
+![image-page-admin](./PageAamin.assets/image-page-admin.png)
 
 
 

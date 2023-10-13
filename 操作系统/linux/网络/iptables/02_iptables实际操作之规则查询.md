@@ -1,5 +1,5 @@
 ---
-title: iptables 实际操作之规则查询
+title: 2_iptables 实际操作之规则查询
 description: 
 published: true
 date: 2023-03-08T10:57:15.159Z

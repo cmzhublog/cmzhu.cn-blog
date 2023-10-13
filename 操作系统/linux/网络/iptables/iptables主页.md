@@ -1,13 +1,3 @@
----
-title: iptables 主页
-description: 
-published: true
-date: 2023-03-30T07:19:08.342Z
-tags: linux
-editor: markdown
-dateCreated: 2023-03-08T05:58:37.791Z
----
-
 # iptables 详解
 
 - [1_iptables详解](./1_iptables详解)

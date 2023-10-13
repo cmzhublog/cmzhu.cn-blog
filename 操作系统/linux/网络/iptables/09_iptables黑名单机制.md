@@ -1,16 +1,4 @@
----
-title: 9_iptables 黑名单机制
-description: 
-published: true
-date: 2023-03-30T06:27:18.522Z
-tags: linux
-editor: markdown
-dateCreated: 2023-03-30T06:27:18.522Z
----
-
-# 9_iptables 黑白名单机制
-
-
+## 9_iptables 黑白名单机制
 
 前文中一直在强调; 报文经过iptables 链时, 会匹配链中的规则, 遇到匹配的规则时,就会执行相应的动作, 如果链中的规则都没有匹配到的时候, 就使用默认规则(默认策略)
 

@@ -1,22 +1,10 @@
----
-title: 10_iptables自定义链
-description: 
-published: true
-date: 2023-03-30T07:18:37.743Z
-tags: linux
-editor: markdown
-dateCreated: 2023-03-30T07:18:37.743Z
----
-
-# iptables 自定义链
+## iptables 自定义链
 
 
 
 前面都在学习iptables 默认链的柜子, 这一文来讲解一下自定义链
 
-
-
-## 背景
+### 背景
 
 iptables 默认链已经完全满足日常需求了, 为什么还要使用自定义链呢?
 

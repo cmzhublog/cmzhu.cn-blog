@@ -1,18 +1,4 @@
----
-title: 2_iptables 实际操作之规则查询
-description: 
-published: true
-date: 2023-03-08T10:57:15.159Z
-tags: linux
-editor: markdown
-dateCreated: 2023-03-08T10:57:15.159Z
----
-
-
-
-
-
-# iptables 实际操作之规则查询
+## iptables 实际操作之规则查询
 
 ![wsktn.jpg](https://www.zsythink.net/wp-content/uploads/ueditor/php/upload/image/20170413/1492062771658218.jpg)
 

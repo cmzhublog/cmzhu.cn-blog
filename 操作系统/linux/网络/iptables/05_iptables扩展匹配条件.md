@@ -1,18 +1,10 @@
----
-title: 5_iptables 扩展条件
-description: 
-published: true
-date: 2023-03-23T01:54:52.053Z
-tags: linux
-editor: markdown
-dateCreated: 2023-03-23T01:54:52.053Z
----
 
-# iptables 扩展匹配条件
+
+## iptables 扩展匹配条件
 
 前文有讲到了扩展匹配条件, 使用到了tcp 模块; 除了这个模块之外, 还有很多扩展模块, 这里对一些常用的扩展模块进行一一讲解.
 
-## iprange 模块
+### iprange 模块
 
 之前有讲过, 在不使用任何扩展模块情况下, 可以使用 -s he -d 指定匹配的报文的源地址和目标地址, 在指定IP 时可以指定一个IP, 也可以使用 `","` 指定多个IP, 但是<font color="red">不能连续指定多个IP</font>, 使用iprange 就可以实现;
 
@@ -43,7 +35,7 @@ Chain INPUT (policy ACCEPT 111 packets, 7460 bytes)
 
 查看规则时 可以发现是`"source IP range 192.168.122.100-192.168.122.120" ` 在最后的描述信息中体现对应的IP限制范围
 
-## string 模块
+### string 模块
 
 使用string 模块, 可以指定要匹配的字符串, 如果报文中存在符合条件的字符串, 则符合匹配条件
 
@@ -69,9 +61,7 @@ Chain INPUT (policy ACCEPT 391 packets, 45789 bytes)
 
 ```
 
-
-
-## time扩展模块
+### time扩展模块
 
 可以通过 time 模块, 根据时间段匹配报文, 如果报文在时间范围之类, 就符合匹配条件, 例如:
 我需要自我约束, 早上9 点到晚上 6 点不能看网页? 

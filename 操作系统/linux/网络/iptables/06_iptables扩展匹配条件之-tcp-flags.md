@@ -1,14 +1,4 @@
----
-title: 6_iptables 扩展匹配条件之 -tcp-flags
-description: 
-published: true
-date: 2023-03-23T01:56:41.332Z
-tags: linux
-editor: markdown
-dateCreated: 2023-03-23T01:56:41.332Z
----
-
-# iptables 扩展匹配条件之 -tcp-flags
+## iptables 扩展匹配条件之 -tcp-flags
 
 前文之中已经对tcp 扩展模块进行过总结, 但是 只介绍了`--dport` 和 `--sport` 的匹配, 并没有对 `-tcp-flags`进行总结, 下面来学习一下
 
@@ -70,9 +60,7 @@ iptables -t filter -I INPUT -p tcp -m tcp --dport 22 --tcp-flags ALL ACK -j REJE
 iptables -t filter -I INPUT -p tcp -m tcp --dport 22 --syn -j REJECT
 ```
 
-
-
-## 用途
+### 用途
 
 使用`-tcp-flags` 匹配时, 可以有效防止 DDOS 攻击, 使用以下规则进行处理
 

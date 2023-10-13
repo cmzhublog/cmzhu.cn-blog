@@ -1,18 +1,6 @@
----
-title: iptables扩展udp之 icmp扩展
-description: 
-published: true
-date: 2023-03-23T02:10:36.275Z
-tags: linux
-editor: markdown
-dateCreated: 2023-03-23T02:10:36.275Z
----
+## `iptables` 扩展`udp`之 `icmp`扩展
 
-# `iptables` 扩展`udp`之 `icmp`扩展
-
-
-
-## udp 扩展
+### udp 扩展
 
 `udp` 扩展中使用的匹配条件较少, 只有两个 `--dport`和`--sport` ,即只匹配报文的源端口和目标端口; 例如:
 
@@ -23,9 +11,7 @@ iptables -t filter -I INPUT -p udp -m udp --dport 137 -j ACCEPT
 iptables -t filter -I INPUT -p udp -m udp --dport 138 -j ACCEPT
  ```
 
-
-
-## `icmp` 扩展
+### `icmp` 扩展
 
 现在聊聊`icmp`扩展，没错，看到`icmp`，你肯定就想到了`ping`命令，因为`ping`命令使用的就是`icmp`协议。
 

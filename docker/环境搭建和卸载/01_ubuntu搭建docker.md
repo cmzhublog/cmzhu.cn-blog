@@ -1,5 +1,5 @@
 ---
-title: Ubuntu搭建docker
+title: 01_ubuntu搭建docker
 description: 
 published: true
 date: 2022-10-30T00:27:01.557Z
@@ -8,17 +8,13 @@ editor: markdown
 dateCreated: 2022-10-27T07:46:18.645Z
 ---
 
-# Ubuntu 搭建Docker
+## Ubuntu 搭建Docker
 
-
-
-## 安装Docker
+### 安装Docker
 
 在新主机上首次安装 Docker Engine-Community 之前，需要设置 Docker 仓库。
 
----
-
-### 使用官方安装脚本自动安装
+#### 使用官方安装脚本自动安装
 
 
 安装指令
@@ -33,7 +29,7 @@ curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
 curl -sSL https://get.daocloud.io/docker | sh
 ```
 
-### 手动安装
+#### 手动安装
 
 #### 卸载旧版本
 
@@ -51,7 +47,7 @@ sudo apt-get remove docker docker-engine docker.io containerd runc
 
 在新主机上首次安装 Docker Engine-Community 之前，需要设置 Docker 仓库。之后，您可以从仓库安装和更新 Docker 。
 
-#### 设置仓库
+设置仓库
 
 更新 apt 包索引。
 ```

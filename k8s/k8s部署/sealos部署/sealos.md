@@ -144,10 +144,10 @@ docker pull labring/helm:v3.8.2
 docker pull labring/calico:v3.24.1
 ```
 
-
+单机安装命令如下：
 
 ```bash
-sealos run labring/kubernetes:v1.25.0 labring/helm:v3.8.2 dockerhub.cmzhu.cn:5000/docker.io/labring/calico:v3.24.1 --single
+sealos run dockerhub.cmzhu.cn:5000/docker.io/labring/kubernetes:v1.25.0 dockerhub.cmzhu.cn:5000/docker.io/labring/helm:v3.8.2 dockerhub.cmzhu.cn:5000/docker.io/labring/calico:v3.24.1 --single
 ```
 
 #### 集群安装 Kuberentes

@@ -158,3 +158,81 @@ sealos run labring/kubernetes:v1.25.0 labring/helm:v3.8.2 labring/calico:v3.24.1
      --nodes 192.168.64.21,192.168.64.19 -p [your-ssh-passwd]
 ```
 
+#### sealos 增加节点
+
+```bash
+## 增加node 节点
+$ sealos add --nodes 192.168.64.21,192.168.64.19
+## 增加master 节点
+$  sealos add --masters 192.168.64.21,192.168.64.19 
+```
+
+#### sealos 删除节点
+
+```bash
+## 删除node 节点
+$ sealos delete --nodes 192.168.64.21,192.168.64.19 
+## 删除master 节点
+$ sealos delete --masters 192.168.64.21,192.168.64.19
+```
+
+#### 重置集群（删除集群）
+
+```bash
+$ sealos reset
+```
+
+#### 离线交付
+
+只需要提前导入需要使用到得镜像， 或者保证环境中存在相应得包， 就能够和原本的在线安装方式相同， 来安装
+
+```bash
+$ sealos pull labring/kubernetes:v1.25.0
+# 打包镜像
+$ sealos save -o kubernetes.tar labring/kubernetes:v1.25.0
+```
+
+#### load 镜像
+
+将save 的镜像kubernetes.tar拷贝到指定环境中， load 即可
+
+```bash
+$ sealos load -i kubernetes.tar
+```
+
+剩下的安装方式与在线安装一致
+
+```bash
+$ sealos images # 查看集群镜像是否导入成功
+$ sealos run labring/kuberentes:v1.25.0  # 单机安装，集群安装同理
+```
+
+#### 快速启动
+
+```bash
+$ sealos run kubernetes.tar # 单机安装，集群安装同理
+```
+
+### k8s 和sealos 支持镜像版本说明
+
+#### 支持containerd 的k8s （k8s 版本  >=  1.18.0）
+
+| k8s 版本 | sealos 版本       | cri 版本 | 镜像版本                   |
+| -------- | ----------------- | -------- | -------------------------- |
+| `<1.25`  | `>=v4.0.0`        | v1alpha2 | labring/kubernetes:v1.24.0 |
+| `>=1.25` | `>=v4.1.0`        | v1alpha2 | labring/kubernetes:v1.25.0 |
+| `>=1.26` | `>=v4.1.4-rc3`    | v1       | labring/kubernetes:v1.26.0 |
+| `>=1.27` | `>=v4.2.0-alpha3` | v1       | labring/kubernetes:v1.27.0 |
+
+这些版本都是以containerd 为容器运行时（runc）；
+
+#### 支持 docker 的 Kubernetes（k8s 版本 >=1.18.0）
+
+| k8s 版本 | sealos 版本       | cri 版本 | 镜像版本                          |
+| -------- | ----------------- | -------- | --------------------------------- |
+| `<1.25`  | `>=v4.0.0`        | v1alpha2 | labring/kubernetes-docker:v1.24.0 |
+| `>=1.25` | `>=v4.1.0`        | v1alpha2 | labring/kubernetes-docker:v1.25.0 |
+| `>=1.26` | `>=v4.1.4-rc3`    | v1       | labring/kubernetes-docker:v1.26.0 |
+| `>=1.27` | `>=v4.2.0-alpha3` | v1       | labring/kubernetes-docker:v1.27.0 |
+
+上表是以docker 为容器运行时（runc）的k8s 

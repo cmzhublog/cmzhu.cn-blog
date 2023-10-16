@@ -43,7 +43,7 @@ registry.k8s.io/defaultbackend-amd64:1.5
 ```dockerfile
 FROM scratch
 COPY ../ingress-nginx .
-CMD ["helm upgrade --install  ingress-nginx  ingress-nginx-4.8.2.tgz --namespace ingress-nginx --create-namespace"]
+CMD ["helm upgrade --install  ingress-nginx  --set controller.hostNetwork=true --set controller.dnsPolicy=ClusterFirstWithHostNet   ingress-nginx-4.8.2.tgz --namespace ingress-nginx --create-namespace"]
 ```
 
 ### 构建集群镜像

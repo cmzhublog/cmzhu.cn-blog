@@ -427,3 +427,92 @@ spec:
 **说明：**
 
 Kubernetes 不负责管理 `externalIPs` 的分配，这一工作是集群管理员的职责。
+
+### 示例
+
+#### 背景
+
+- 本地 192.168.101.70:8096 端口上有搭建一个外部emby服务, 使用 ingress + endpointslice + service 通过 `movie.cmzhu.cn` 进行访问
+
+#### 配置步骤
+
+1、 配置没有选择器的service
+
+```bash
+$  cat embyservice.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: emby
+  namespace: cmzhu
+spec:
+  ports:
+    - protocol: TCP
+      port: 8096
+      targetPort: 8096
+```
+
+2、 配置endpointSlice, 并将endpointslice 指向service
+
+```bash
+$ cat embyendpointslice.yaml
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: emby # 按惯例将服务的名称用作 EndpointSlice 名称的前缀
+  namespace: cmzhu
+  labels:
+    # 你应设置 "kubernetes.io/service-name" 标签。
+    # 设置其值以匹配服务的名称
+    kubernetes.io/service-name: emby
+addressType: IPv4
+ports:
+  - name: '' # 留空，因为 port 9376 未被 IANA 分配为已注册端口
+    appProtocol: http
+    protocol: TCP
+    port: 8096
+endpoints:  # 此列表中的 IP 地址可以按任何顺序显示
+  - addresses:
+      - "192.168.101.70"
+```
+
+3、 配置 movie.cmzhu.cn 的ingress
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: emby
+  namespace: cmzhu
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: movie.cmzhu.cn
+      http:
+        paths:
+          - pathType: Prefix
+            backend:
+              service:
+                name: emby
+                port:
+                  number: 8096
+            path: /
+  # This section is only required if TLS is to be enabled for the Ingress
+  tls:
+    - hosts:
+      - movie.cmzhu.cn
+      secretName: movie_tls
+
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: movie_tls
+  namespace: cmzhu
+data:
+  tls.crt: <base64 encoded cert>
+  tls.key: <base64 encoded key>
+type: kubernetes.io/tls
+```
+
+ 

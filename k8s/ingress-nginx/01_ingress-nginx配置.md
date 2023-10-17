@@ -1,5 +1,5 @@
 ---
-title: ingress-nginx 配置
+title: 01_ingress-nginx 配置
 description: 
 published: true
 date: 2023-07-12T06:13:34.431Z

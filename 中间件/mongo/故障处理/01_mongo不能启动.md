@@ -1,5 +1,5 @@
 ---
-title: mongo 首页
+title: 01_mongo 不能正常启动故障
 description: 
 published: true
 date: 2023-03-18T06:12:53.565Z

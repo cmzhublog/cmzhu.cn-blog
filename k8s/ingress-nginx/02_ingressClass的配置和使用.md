@@ -20,7 +20,7 @@ ingress 是为集群外部访问集群内部服务提供 HTTP和HTTPS 路由, �
 
 ```mermaid
 graph LR
-  A(客户端) -->|ingress controller| B(Ingress)-->|路由规则| C(service)
+  A(客户端) -->|ingress controller| B(Ingress)-->|路由规则| C{service}
   C-->|selector选择器|D(Pod1)
   C-->|selector选择器|E(Pod2)
 ```

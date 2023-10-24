@@ -1,12 +1,4 @@
----
-title: 优化进程优先级
-description: 
-published: true
-date: 2023-02-17T02:25:05.759Z
-tags: linux
-editor: markdown
-dateCreated: 2023-02-17T02:25:05.759Z
----
+
 
 # linux 系统优化
 

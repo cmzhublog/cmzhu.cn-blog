@@ -1,13 +1,3 @@
----
-title: IO 调度优先级设置
-description: 
-published: true
-date: 2023-02-17T02:46:47.294Z
-tags: linux
-editor: markdown
-dateCreated: 2023-02-17T02:46:47.294Z
----
-
 # 磁盘IO 优化
 
 

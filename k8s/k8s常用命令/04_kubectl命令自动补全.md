@@ -13,8 +13,8 @@ $ dnf install bash-completion -y
 2、 设置配置
 
 ```bash
+$ source /usr/share/bash-completion/bash_completion
 $ source <(kubectl completion bash)
-
 $ echo "source <(kubectl completion bash)" >> ~/.bashrc
 ```
 

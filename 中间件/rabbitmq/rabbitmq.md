@@ -5214,3 +5214,13 @@ $  kubectl get customresourcedefinitions.apiextensions.k8s.io | grep rabbitmqclu
 rabbitmqclusters.rabbitmq.com                         2023-10-25T06:34:56Z
 ```
 
+4、通过crd 安装 rabbitmq( kubectl apply -f hello-world.yaml)
+
+```yaml
+$ cat hello-world.yaml
+apiVersion: rabbitmq.com/v1beta1
+kind: RabbitmqCluster
+metadata:
+  name: hello-world
+```
+

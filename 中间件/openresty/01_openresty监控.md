@@ -51,19 +51,19 @@ $ ls /usr/local/openresty/site/lualib/prometheus.lua
     lua_package_path "/usr/local/openresty/site/lualib/?.lua;;";
 
     init_worker_by_lua_block {
-      prometheus = require("prometheus").init("prometheus_metrics")
+      	prometheus = require("prometheus").init("prometheus_metrics")
 
-      metric_requests = prometheus:counter(
-        "nginx_http_requests_total", "Number of HTTP requests", {"host", "status"})
-      metric_latency = prometheus:histogram(
-        "nginx_http_request_duration_seconds", "HTTP request latency", {"host"})
-      metric_connections = prometheus:gauge(
-        "nginx_http_connections", "Number of HTTP connections", {"state"})
+        metric_requests = prometheus:counter(
+          "nginx_http_requests_total", "Number of HTTP requests", {"host", "status", "request_uri", "request_method"})
+        metric_latency = prometheus:histogram(
+          "nginx_http_request_duration_seconds", "HTTP request latency", {"host", "status", "request_uri", "request_method"})
+        metric_connections = prometheus:gauge(
+          "nginx_http_connections", "Number of HTTP connections", {"state"})
     }
 
     log_by_lua_block {
-      metric_requests:inc(1, {ngx.var.server_name, ngx.var.status})
-      metric_latency:observe(tonumber(ngx.var.request_time), {ngx.var.server_name})
+      metric_requests:inc(1, {ngx.var.server_name, ngx.var.status, ngx.var.request_uri, ngx.var.request_method})
+      metric_latency:observe(tonumber(ngx.var.request_time), {ngx.var.server_name, ngx.var.status, ngx.var.request_uri, ngx.var.request_method})
     } # https://cdn.console.aliyun.com/domain/detail/cdn.bigquant.com/backSrc
 
 ```
@@ -73,7 +73,9 @@ $ ls /usr/local/openresty/site/lualib/prometheus.lua
 ```nginx
 server {
   listen 9145;
-  allow 192.168.0.0/16;
+  server_name _;
+  allow 10.160.0.0/16;
+  allow 10.96.0.0/12;
   deny all;
   location /metrics {
     content_by_lua_block {

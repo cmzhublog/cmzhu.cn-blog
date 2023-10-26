@@ -5218,9 +5218,7 @@ rabbitmqclusters.rabbitmq.com                         2023-10-25T06:34:56Z
 
 ```yaml
 $ cat hello-world.yaml
-apiVersion: rabbitmq.com/v1beta1
-kind: RabbitmqCluster
-metadata:
-  name: hello-world
+
+
 ```
 

@@ -79,3 +79,12 @@ $ scp -r www.runoob.com:/home/root/others/ /home/space/music/
 > ```
 >
 > 2.使用scp命令要确保使用的用户具有可读取远程服务器相应文件的权限，否则scp命令是无法起作用的。
+
+
+
+3、保留用户权限配置和时间
+
+```bash
+$ scp  -vp -r www.runoob.com:/home/root/others/ /home/space/music/
+```
+

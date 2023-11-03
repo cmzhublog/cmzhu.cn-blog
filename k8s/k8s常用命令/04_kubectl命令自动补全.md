@@ -18,3 +18,16 @@ $ source <(kubectl completion bash)
 $ echo "source <(kubectl completion bash)" >> ~/.bashrc
 ```
 
+3、 如果将kubectl 设置了别名, 可以使用下面命令来补全
+
+```bash
+## 将别名设置成 k
+$ echo 'alias k=kubectl' >> ~/.bashrc
+## 设置 k 也支持补全
+$ echo 'complete -F __start_kubectl k' >>~/.bashrc
+
+## 配置生效
+$ source ~/.bashrc
+
+```
+

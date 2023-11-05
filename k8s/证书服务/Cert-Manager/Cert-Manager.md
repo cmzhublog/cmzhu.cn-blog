@@ -16,8 +16,6 @@ $ helm repo add jetstack https://charts.jetstack.io
 $ helm repo update
 ```
 
-
-
 ### 参考资料
 
 https://cert-manager.io/docs/usage/certificate/

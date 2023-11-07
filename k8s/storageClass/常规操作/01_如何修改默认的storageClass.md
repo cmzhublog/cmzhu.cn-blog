@@ -44,4 +44,3 @@ NAME                         PROVISIONER        RECLAIMPOLICY   VOLUMEBINDINGMOD
 openebs-device               openebs.io/local   Delete          WaitForFirstConsumer   false                  11m
 openebs-hostpath (default)   openebs.io/local   Delete          WaitForFirstConsumer   false                  11m
 ```
-

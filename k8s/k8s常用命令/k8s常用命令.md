@@ -158,7 +158,7 @@ kubectl get deployments -n userbox -o json | jq '.items[] | {name: .metadata.nam
 ```
 - 获取所有Pod 常用的镜像
 ```bash
-k get pod -o jsonpath='{.items[*].spec.containers[*].ima -Age}' | sed 's/ /\n/g'
+k get pod -o jsonpath='{.items[*].spec.containers[*].image}' | sed 's/ /\n/g'
 ```
 - 污点和容忍度
 [污点和容忍度](/k8s/k8s常用命令/污点和容忍度)

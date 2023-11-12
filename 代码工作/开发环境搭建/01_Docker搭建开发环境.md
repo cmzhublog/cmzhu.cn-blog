@@ -20,7 +20,21 @@ USER root
 
 ### 安装必要的插件
 RUN \
-  dnf install openssh-server wget htop -y 
+  dnf -y groupinstall "Development Tools" \
+  && dnf -y install epel-release \
+  && dnf -y install htop \
+  && dnf -y install git 
+RUN \
+  dnf install openssh-server wget vim telnet -y 
+
+## 运行ssh 服务
+RUN \
+  ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key  -N "" \
+  && chmod 600 /etc/ssh/ssh_host_*_key \
+  && chown root:root /etc/ssh/ssh_host_*_key
+
+RUN \
+  /usr/sbin/sshd -D &
 
 ## 安装 golang
 RUN \ 
@@ -28,8 +42,11 @@ RUN \
   && tar -zxvf go1.14.1.linux-amd64.tar.gz -C /usr/local \
   && rm -f go1.14.1.linux-amd64.tar.gz
 
+
 ENV GOROOT=/usr/local/go
 ENV PATH=$PATH:$GOROOT/bin
+
+CMD ["/usr/sbin/sshd", "-D"]
 
 
 

@@ -2,7 +2,15 @@
 
 Cgroups 是Linux 内核提供的可以限制单个进程和多个进程所使用资源的机制, 可以实现对内存、 CPU等资源, 实现精细化控制, 目前比较火的容器化技术(Docker、Containerd) 都是用到了该技术
 
+Linux  系统查看Cgroups 的版本
 
+```bash
+$ stat -fc %T /sys/fs/cgroup/
+```
+
+- V2 版本, 输出 `cgroup2fs`
+
+- V1 版本, 输出 `tmpfs`; V1 版本存在 内存泄漏风险, 建议升级至V2 版本
 
 ### 概念和原理
 
@@ -199,4 +207,3 @@ $ cgclassify -g subsystems:path_to_cgroup pidlist
 ```bash
 $ cgexec -g subsystems:path_to_cgroup command arguments
 ```
-

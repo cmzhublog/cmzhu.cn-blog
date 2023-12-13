@@ -147,7 +147,7 @@ reboot
 
 >  按照官方文档 需要使用`devtoolset-7`编译
 >
-> ![企业微信截图_fa9226ed-5d65-46bd-a07c-ef59ad00221d](.assets/06_BFS原地升级/企业微信截图_fa9226ed-5d65-46bd-a07c-ef59ad00221d.png)
+> ![企业微信截图_fa9226ed-5d65-46bd-a07c-ef59ad00221d](./beegfs原地升级.assets/企业微信截图_fa9226ed-5d65-46bd-a07c-ef59ad00221d.png)
 
 ```bash
 ## 安装 devtoolset-7
@@ -170,7 +170,7 @@ make -C ${dir}/build clean --silent # always clean up
 
 
 
-![image-20230515165243167](.assets/06_BFS原地升级/image-20230515165243167.png)
+![image-20230515165243167](./beegfs原地升级.assets/image-20230515165243167.png)
 
 9、 处理完成之后, 按照顺序重启 `beegfs`
 

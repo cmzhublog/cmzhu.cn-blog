@@ -32,6 +32,14 @@ pg_dumpall -U postgres -f testall.sql
 
 
 
+pg_dump 备份数据库中的某张表，用`-t ` 指定
+
+```bash
+$ pg_dump -t my_table -d mydatabase --inserts -f /backup/my_table_backup.sql 
+```
+
+ 
+
 以上两种方式是导出成copy 个是,这种格式备份数据,恢复时可能会存在一定问题,可以使用 --inserts 将配置备份成sql 样式,这样会更加稳定,上面的命令可修改成如下
 
 ```bash

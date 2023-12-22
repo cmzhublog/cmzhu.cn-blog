@@ -130,7 +130,7 @@ $ kubectl exec -it xxx -- bash
 
 - Always ：容器失效时，kubelet 自动重启该容器；
 - OnFailure ：容器终止运行且退出码不为0时重启；
-- Never ：不论状态为何， kubelet 都不重启该容器
+- Never ：不论状态为何， kubelet 都不重启该容器; 
 
 ### pod的生命周期有哪些状态？
 

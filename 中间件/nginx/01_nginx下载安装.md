@@ -158,3 +158,83 @@ $ sudo apt update
 $ sudo apt install nginx
 ```
 
+###  nginx 编译安装
+
+nginx 支持编译安装, 可以按照如下步骤进行安装, 安装所有需要的依赖, 和换国内下载源
+
+
+
+1、 安装指定编译时需要的依赖
+
+```bash
+$ apt -y install  build-essential \
+	zlib1g-dev \
+	libpcre3-dev \
+	libssl-dev \
+	wget 
+```
+
+修改国内源
+
+```bash
+$ cat << EOF | sudo tee /etc/apt/sources.list
+deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+EOF
+
+$ apt-get update
+
+```
+
+
+
+2、 在官网查找对应的nginx 的版本, 以下按照nginx1.24.0 版本来安装
+
+```bash
+$ wget https://nginx.org/download/nginx-1.24.0.tar.gz
+$ tar -zxvf  nginx-1.24.0.tar.gz && cd nginx-1.24.0
+```
+
+3、开始编译安装
+
+```bash
+$ ls
+CHANGES  CHANGES.ru  LICENSE  README  auto  conf  configure  contrib  html  man  src
+```
+
+```bash
+$ ./configure
+...
+...
+Configuration summary
+  + using system PCRE library
+  + OpenSSL library is not used
+  + using system zlib library
+
+  nginx path prefix: "/usr/local/nginx"
+  nginx binary file: "/usr/local/nginx/sbin/nginx"
+  nginx modules path: "/usr/local/nginx/modules"
+  nginx configuration prefix: "/usr/local/nginx/conf"
+  nginx configuration file: "/usr/local/nginx/conf/nginx.conf"
+  nginx pid file: "/usr/local/nginx/logs/nginx.pid"
+  nginx error log file: "/usr/local/nginx/logs/error.log"
+  nginx http access log file: "/usr/local/nginx/logs/access.log"
+  nginx http client request body temporary files: "client_body_temp"
+  nginx http proxy temporary files: "proxy_temp"
+  nginx http fastcgi temporary files: "fastcgi_temp"
+  nginx http uwsgi temporary files: "uwsgi_temp"
+  nginx http scgi temporary files: "scgi_temp"
+  
+
+$ make && make install 
+
+```
+

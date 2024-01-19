@@ -16,7 +16,7 @@
 
 ### 简介
 
-![img](./NVIDIA GPU-Operator.assets/nvidia-gpu-operator-image9.jpg)
+![img](./01_NVIDIA GPU-Operator.assets/nvidia-gpu-operator-image9.jpg)
 
 Kubernetes提供了通过设备插件框架访问特殊硬件资源，如NVIDIA GPU、NIC、Infiniband适配器和其他设备的功能。但是，配置和管理具有这些硬件资源的节点需要配置多个软件组件，如驱动程序、容器运行时或其他库，这很困难且容易出错。NVIDIA GPU Operator使用Kubernetes内的操作员框架自动化管理所有用于GPU提供的NVIDIA软件组件。这些组件包括NVIDIA驱动程序（以启用CUDA）、用于GPU的Kubernetes设备插件、NVIDIA Container Toolkit、使用GFD进行自动节点标记、基于DCGM的监控等。
 

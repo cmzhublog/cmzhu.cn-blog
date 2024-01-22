@@ -30,7 +30,14 @@ EOF
 
 kubectl create ns ingress-nginx
 
-helm install ingress-nginx -n ingress-nginx -f ./values.yml
+helm \
+upgrade --install \
+-n ingress-nginx \
+ingress-nginx \
+--create-namespace \
+ingress-nginx/ingress-nginx \
+--debug \
+-f values.yml
 ```
 
 

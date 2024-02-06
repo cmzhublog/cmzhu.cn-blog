@@ -10,7 +10,7 @@ dateCreated: 2023-08-18T07:22:21.737Z
 
 ## zstd 压缩工具
 
-> github 地址: https://github.com/facebook/zstd
+> github 地址: [https://github.com/facebook/zstd](https://github.com/facebook/zstd)
 
 表示 `zstd` 和 其他几项压缩工具的对比, 其中, `zstd` 压缩率最高, 压缩和解压时间靠前时间
 

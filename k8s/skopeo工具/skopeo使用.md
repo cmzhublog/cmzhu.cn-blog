@@ -113,8 +113,10 @@ skopeo logout myregistrydomain.com:5000
 ```bash
 -v /root/.docker/config.json:/root/.docker/config.json
 ```
+
+
 | Command                                                      | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| :----------------------------------------------------------- | ------------------------------------------------------------ |
 | [skopeo-copy(1)](https://github.com/containers/skopeo/blob/main/docs/skopeo-copy.1.md) | Copy an image (manifest, filesystem layers, signatures) from one location to another. |
 | [skopeo-delete(1)](https://github.com/containers/skopeo/blob/main/docs/skopeo-delete.1.md) | Mark the image-name for later deletion by the registry's garbage collector. |
 | [skopeo-inspect(1)](https://github.com/containers/skopeo/blob/main/docs/skopeo-inspect.1.md) | Return low-level information about image-name in a registry. |

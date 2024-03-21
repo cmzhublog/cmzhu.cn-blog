@@ -134,8 +134,57 @@ kubectl label nodes <dev-whliao> node-role.kubernetes.io/kbdev= node-role.kubern
 
 ### 开发工具包安装
 
-```
-dnf install -y telnet traceroute nmap-ncat bind-utils net-tools iproute dnf install -y \    git git-lfs \    sudo \    passwd shadow-utils \    jq \    \    && dnf install -y \    ca-certificates \    gnupg gnupg2 \    vim \    ccze \    wget curl rsync \    tree \    lsof \    tmux screen \    zip unzip \    unrar \    procps-ng \    man-pages man-db \    bash-completion \    which dnf install -y llvm llvm-libs clang libomp compiler-rt dnf --enablerepo=devel install -y \ mysql-devel \ libaec-devel \ hdf5-devel \ ncurses ncurses-devel \ bzip2 bzip2-devel \ openssl openssl-devel \ boost-devel \ sqlite-devel \ gdbm-devel \ readline-devel \ zlib-devel \ libffi-devel dnf install -y \ glibc \ libstdc++ \ libstdc++.so.6 \ libstdc++-devel \ glibc-all-langpacks \ kernel-doc \ kernel-headers \ kernel-devel \ kernel-debug-devel \ kernel-tools \ kernel-tools-libs dnf install -y langpacks-en langpacks-zh_CN dnf groupinstall -y Fonts
+```bash
+$ dnf install -y telnet traceroute nmap-ncat bind-utils net-tools iproute 
+$ dnf install -y \
+git git-lfs \
+sudo \
+passwd shadow-utils \
+jq \
+\
+&& dnf install -y \
+ca-certificates \
+gnupg gnupg2 \
+vim \
+ccze \
+wget curl rsync \
+tree \
+lsof \
+tmux screen \
+zip unzip \
+unrar \
+procps-ng \
+man-pages man-db \
+bash-completion \
+which 
+
+$ dnf install -y llvm llvm-libs clang libomp compiler-rt dnf --enablerepo=devel install -y \
+mysql-devel \
+libaec-devel \
+hdf5-devel \
+ncurses ncurses-devel \
+bzip2 bzip2-devel \
+openssl openssl-devel \
+boost-devel \
+sqlite-devel \
+gdbm-devel \
+readline-devel \
+zlib-devel \
+libffi-devel 
+
+$ dnf install -y \
+glibc \
+libstdc++ \
+libstdc++.so.6 \
+libstdc++-devel \
+glibc-all-langpacks \
+kernel-doc \
+kernel-headers \
+kernel-devel \
+kernel-debug-devel \
+kernel-tools \
+kernel-tools-libs 
+$ dnf install -y langpacks-en langpacks-zh_CN dnf groupinstall -y Fonts
 ```
 
 ### 调整Kubelet

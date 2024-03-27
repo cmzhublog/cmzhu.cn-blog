@@ -21,11 +21,6 @@ tar zxvf docker-ce.tgz -C .
 ```bash
 mv ./docker /usr/local/docker-${DOCKER_VERSION/v/}
 
-ln -s /usr/local/docker-${DOCKER_VERSION/v/}/dockerd /usr/bin/dockerd
-ln -s /usr/local/docker-${DOCKER_VERSION/v/}/docker-proxy /usr/bin/docker-proxy
-ln -s /usr/local/docker-${DOCKER_VERSION/v/}/docker /usr/bin/docker
-ln -s /usr/local/docker-${DOCKER_VERSION/v/}/docker-init /usr/bin/docker-init
-
 ln -s /usr/local/docker-${DOCKER_VERSION/v/}/dockerd /usr/local/bin/dockerd
 ln -s /usr/local/docker-${DOCKER_VERSION/v/}/docker-proxy /usr/local/bin/docker-proxy
 ln -s /usr/local/docker-${DOCKER_VERSION/v/}/docker /usr/local/bin/docker

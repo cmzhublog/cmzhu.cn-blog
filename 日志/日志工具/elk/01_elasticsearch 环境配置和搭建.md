@@ -354,7 +354,8 @@ Escape character is '^]'.
 ```
 
 ```bash
- $ curl 10.96.1.199:9200/_cat
+
+$ curl 10.96.1.199:9200/_cat
 =^.^=
 /_cat/allocation
 /_cat/shards

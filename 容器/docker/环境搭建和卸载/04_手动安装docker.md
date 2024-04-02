@@ -65,7 +65,7 @@ $ systemctl daemon-reload
 
 ```bash
 # 开机启动
-$ systemctl enable docker.service
+$ systemctl enable --now docker.service
 # 启动docker
 $ systemctl start docker
 # docker状态

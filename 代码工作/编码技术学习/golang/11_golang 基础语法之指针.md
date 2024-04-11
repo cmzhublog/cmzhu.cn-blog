@@ -192,3 +192,71 @@ a[2] = 300
 
 ### golang 指向指针的指针(双指针)
 
+指针变量存放的是另一个指针变量的地址, 称这个指针变量为指向指针变量
+
+![img](./11_golang%20%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B9%8B%E6%8C%87%E9%92%88.assets/pointer_to_pointer.jpg)
+
+定义方式如下
+
+```go
+var ptr **int
+```
+
+指向指针变量需要在前面加上2个*
+
+例子: 
+
+```go
+package main
+
+import "fmt"
+
+const MAX int = 3
+
+func main() {
+	var a int = 100
+	var ptr *int
+	var pptr **int
+
+	ptr = &a
+	pptr = &ptr
+  
+	fmt.Printf("a 的值是: %d\n", a)
+	fmt.Printf("ptr 指向的地址是: %x\n", ptr)
+	fmt.Printf("pptr 指向的地址是: %x\n", pptr)
+	fmt.Printf("ptr 指向的值是: %d\n", *ptr)
+	fmt.Printf("pptr 指向的值是: %d\n", **pptr)
+
+}
+```
+
+### go 指针作为函数参数
+
+go 语言允许向函数传递指针, 只需要在函数定义上设置成指针即可
+
+```go
+package main
+
+import "fmt"
+
+const MAX int = 3
+
+func swap (x *int, y *int) {
+	var tmp int
+	tmp = *x
+	*x = *y
+	*y = tmp
+}
+
+func main() {
+
+	var a, b int = 10, 20 
+
+	swap(&a, &b)
+
+	fmt.Printf("a 的值是: %d\n", a)
+	fmt.Printf("b 的值是: %d\n", b)
+
+}
+```
+

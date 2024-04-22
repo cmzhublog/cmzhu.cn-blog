@@ -153,8 +153,15 @@ flags:
 
 1、 配置某一张网卡使用特定的显卡, 配置时可以在Pod 中通过环境变量配置`NVIDIA_VISIBLE_DEVICES`
 
-```bash
+```yaml
 # 表示使用节点上的pcie 编号为3 的那张gpu设备
 NVIDIA_VISIBLE_DEVICES: 3
+```
+
+2、 如果需要使用到多张显卡； 可以使用传入多个参数来指定对应的显卡
+
+```yaml
+# 表示使用节点上的pcie 编号为2,3 的那张gpu设备
+NVIDIA_VISIBLE_DEVICES: 2,3
 ```
 

@@ -163,3 +163,5 @@ k get pod -o jsonpath='{.items[*].spec.containers[*].image}' | sed 's/ /\n/g'
 - 污点和容忍度
 [污点和容忍度](/k8s/k8s常用命令/污点和容忍度)
 
+
+

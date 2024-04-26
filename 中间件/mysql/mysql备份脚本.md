@@ -30,3 +30,11 @@ mkdir -p $DATE
 mysqldump -h $HOST -u$USER -p$PASSWORD --single-transaction --skip-lock-tables --all-databases > ${BACKUP_DIR}/mysql_cluster_${DATE}.sql
 ```
 
+
+
+备份表结构
+
+```bash
+$ mysqldump --opt -d bigai -uroot -p$MYSQL_ROOT_PASSWORD > bigai-struct.sql　
+```
+

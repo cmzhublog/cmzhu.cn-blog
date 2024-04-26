@@ -45,14 +45,6 @@ $ dd if=boot.img of=/dev/fd0 bs=1440k
 $  dd if=testfile_2 of=testfile_1 conv=ucase 
 ```
 
-当前目录下创建10个5G 的文件
-
-```bash
-$ for i in {0..9};do dd if=/dev/zero of=file${i} bs=1G count=5;done
-```
-
-
-
 其中testfile_2 的内容为：
 
 ```
@@ -92,5 +84,27 @@ HELLO LINUX! #按组合键Ctrl+D退出，转换成大写结果
 记录了0+1 的写出  
 13字节（13 B）已复制，12.1558 秒，0.0 KB/s 
 ```
+
+当前目录下创建10个5G 的文件
+
+```bash
+$ for i in {0..9};do dd if=/dev/zero of=file${i} bs=1G count=5;done
+```
+
+dd 磁盘测试
+
+1、 生成大文件用于读写
+
+```bash
+$ dd if=/dev/zero of=io.file bs=1024M count=50 
+```
+
+2、使用大文件来读写
+
+```bash
+$ dd if=io.file if=/dev/null bs=1024M
+```
+
+
 
 文档来自: [https://www.runoob.com/linux/linux-comm-dd.html](https://www.runoob.com/linux/linux-comm-dd.html)

@@ -153,6 +153,8 @@ mysql> show tables;
 在internel/model 目录下创建model.go 文件
 
 ```go 
+package models
+
 type Model struct {
 	ID	uint32 `gorm:"primary_key" json:"id"`
 	CreatedBy string `json:"created_by"`
@@ -167,6 +169,8 @@ type Model struct {
 创建标签的model tag.go文件
 
 ```go
+package models
+
 type Tag struct {
 	*Model
 	Name string `json:"name"`
@@ -183,6 +187,8 @@ func (t Tag) TableName() string {
 在 `internal/model` 目录下创建 article.go 文件，写入如下代码
 
 ```go
+package models
+
 type Article struct {
 	*Model
 	Title string `json:"title"`
@@ -202,6 +208,8 @@ func (a Article) TableName() string {
 在 `internal/model` 目录下创建 article_tag.go 文件，写入如下代码：
 
 ```go
+package models
+
 type ArticleTag struct {
 	*Model
 	TagID uint32 `json:"tag_id"`
@@ -248,7 +256,7 @@ func (a ArticleTag) TableName() {
 在确定了业务接口设计后，需要对业务接口进行一个基础编码，确定其方法原型，把当前工作区切换到项目目录的 `internal/routers` 下，并新建 router.go 文件，写入代码：
 
 ```go
-package main
+package routers
 
 import (
 	"github.com/gin-gonic/gin"
@@ -282,7 +290,7 @@ func NewRouter() *gin.Engine{
 接下来编写对应路由的处理方法，我们在项目目录下新建 `internal/routers/api/v1` 文件夹，并新建 tag.go（标签）和 article.go（文章）文件，写入代码下述代码。
 
 ```go
-package 
+package v1
 
 import (
 	"github.com/gin-gonic/gin"

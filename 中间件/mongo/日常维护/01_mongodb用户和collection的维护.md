@@ -24,7 +24,7 @@ test>
 
 ```
 
-2、 创建collections, 创建一个为testxxx 的collection
+2、 创建collections, 创建一个为testexample的collection
 
 ```bash
 $  use testexample

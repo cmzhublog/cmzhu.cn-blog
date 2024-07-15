@@ -188,3 +188,9 @@ test>
 
 ```
 
+###  mongodump 数据库备份
+
+```bash
+$ mongodump -u root -p {password} --out /data/db/20240711
+```
+

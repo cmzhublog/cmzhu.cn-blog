@@ -10,7 +10,20 @@
 $ docker run -it --rm ruby /bin/bash
 ```
 
-3、创建license.rb 文件， 里面存放如下代码
+3、修改gem 国内源， 并安装ruby 需要使用的插件
+
+```bash
+# 修改为国内源
+$ gem sources --remove https://rubygems.org/
+$ gem sources -a https://mirrors.aliyun.com/rubygems/
+$ gem sources -l
+# 安装必要插件
+$ gem install gitlab-license
+```
+
+
+
+4、创建license.rb 文件， 里面存放如下代码
 
 ```ruby
 require "openssl"
@@ -86,15 +99,15 @@ end
 
 ```
 
-3、在容器中执行ruby 脚本，来生成证书; 执行完成之后， 回在当前目录下生成3个文件`GitLabBV.gitlab-license` `license_key` `license_key.pub`
+5、在容器中执行ruby 脚本，来生成证书; 执行完成之后， 回在当前目录下生成3个文件`GitLabBV.gitlab-license` `license_key` `license_key.pub`
 
 ```bash
 $ ruby license.rb
 ```
 
-4、将生成的 license_key.pub 文件复制到到 gitlab 容器中的/opt/gitlab/embedded/service/gitlab-rails/.license_encryption_key.pub
+6、将生成的 license_key.pub 文件复制到到 gitlab 容器中的/opt/gitlab/embedded/service/gitlab-rails/.license_encryption_key.pub
 
-5、重启gitlab， 并在界面上上传所生成的`GitLabBV.gitlab-license` 文件即可；
+7、重启gitlab， 并在界面上上传所生成的`GitLabBV.gitlab-license` 文件即可；
 
 ![GitLab EE 企业版破解](07_gitlab-ee 破解.assets/20240304004343.png)
 

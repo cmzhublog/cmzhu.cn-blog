@@ -53,3 +53,6 @@ exclude=mongodb-org,mongodb-org-database,mongodb-org-server,mongodb-mongosh,mong
 
 
 
+### mongo 初始化副本集
+
+参考文档： [https://www.mongodb.com/zh-cn/docs/manual/tutorial/convert-standalone-to-replica-set/](https://www.mongodb.com/zh-cn/docs/manual/tutorial/convert-standalone-to-replica-set/)

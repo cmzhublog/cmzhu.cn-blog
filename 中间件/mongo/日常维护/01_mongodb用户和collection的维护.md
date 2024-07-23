@@ -194,3 +194,9 @@ test>
 $ mongodump -u root -p {password} --out /data/db/20240711
 ```
 
+### mongorestore 数据库
+
+```bash
+$ mongorestore  -u root -p {password}  --drop /data/db/20240711
+```
+

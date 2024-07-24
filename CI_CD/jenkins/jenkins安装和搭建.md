@@ -63,3 +63,41 @@ $ ssh -L 8080:127.0.0.1:8080 cmzhu@cmzhu.cn
 在初始化时会有部分组件拉取失败, 可以重试重新拉取, 也可以选择继续之后, 在系统信息中手动拉取
 
 ![image-20240115144055028](./jenkins安装和搭建.assets/image-20240115144055028.png)
+
+
+
+### docker-compose 安装jenkins
+
+```yaml
+version: '3.1'
+services:
+  jenkins:
+    image: jenkins/jenkins:2.452.3-lts-jdk17.bcenv.20240715
+    volumes:       # 挂载目录  本地文件夹目录:容器文件夹目录
+      - ${PWD}/jenkins/:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:   # 绑定端口
+      - "18080:8080"
+    expose:  # 暴露端口
+      - "8080"
+      - "50000"
+    privileged: true
+    user: root
+    restart: always
+    container_name: jenkins
+    #environment:
+    #  JAVA_OPTS: '-Djava.util.logging.config.file=/var/jenkins_home/log.properties'
+
+
+    networks:
+      jenkins:
+        aliases:
+          - jenkins
+
+
+networks:
+  jenkins:
+    driver: bridge
+
+```
+

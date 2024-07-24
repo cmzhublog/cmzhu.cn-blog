@@ -1,12 +1,12 @@
 ## docker 运行容器失败
 
-报错：
+### 报错
 
 ```bash
 library initialization failed - unable to allocate file descriptor table - out of memoryAborted (core dumped)
 ```
 
-解决思路
+### 解决思路
 
 1、修改主机和容器的ulimit值, 可通过ulimit -n 查看， 使用如下命令修改
 

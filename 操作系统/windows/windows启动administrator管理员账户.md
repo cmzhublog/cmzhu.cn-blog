@@ -15,4 +15,3 @@ net user administrator <密码>
 net user administrator /active:yes
 ```
 
-

@@ -16,12 +16,18 @@ ${ROCKETMQ_HOME}/bin/mqadmin deleteTopic -n "${NAMESRV_ADDR}" -t "${TOPIC_NAME}"
 2、 通过如下命令可以获取cluster name
 
 ```bash
-${ROCKETMQ_HOME}/bin/mqadmin clusterList -n 127.0.0.1:9876
+$ ${ROCKETMQ_HOME}/bin/mqadmin clusterList -n 127.0.0.1:9876
 ```
 
 3、创建topic
 
 ```bash
-${ROCKETMQ_HOME}/bin/mqadmin  updateTopic -n "${NAMESRV_ADDR}" -t "${TOPIC_NAME}" -c "${Cluster_Name}" -a +message.type=FIFO
+$ ${ROCKETMQ_HOME}/bin/mqadmin  updateTopic -n "${NAMESRV_ADDR}" -t "${TOPIC_NAME}" -c "${Cluster_Name}" -a +message.type=FIFO
+```
+
+4、根据topic 查看消息
+
+```bash
+$ ${ROCKETMQ_HOME}/bin/mqadmin printMsg -t keyword  -n 127.0.0.1:9876 -s 1818195464378384384
 ```
 

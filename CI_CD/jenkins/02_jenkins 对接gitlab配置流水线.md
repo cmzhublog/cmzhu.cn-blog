@@ -34,6 +34,43 @@ gitlab api-token 可在管理员权限创建， 只需要给api 权限即可
 
 pipeline script 的代码如下：
 
-```bash
+```groovy
+pipeline {
+    agent {
+        docker {
+            image 'dockerhub.testcmzhu.top:5000/devops/rocky-base:main_0074660_240728112444'
+            args '-v /var/run/docker.sock:/var/run/docker.sock -v /bin/docker:/bin/docker -v /root/.docker:/root/.docker -v /root/.ssh:/root/.ssh -v /root/.kube:/root/.kube'
+            
+        }
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: '*/main']], 
+                    userRemoteConfigs: [[
+                        url: 'https://gitlab.testcmzhu.top/devops/resume-cmzhu-cn.git', 
+                        credentialsId: 'gitlab-user-password' 
+                    ]],
+                    extensions: [
+                        [$class: 'SubmoduleOption',
+                         recursiveSubmodules: true, // 如果你想递归地更新子模块，则设为 true
+                         reference: '', // 如果使用引用仓库，请设置路径
+                         timeout: 10, // 子模块操作的超时时间（分钟）
+                         trackingSubmodules: false // 跟踪子模块的分支
+                        ]
+                    ]
+                ])
+            }
+        }
+        stage('build') {
+            steps {
+                sh('make DEPLOY_FILE_NAME=deployment-resume.yaml  deploy_k8s')
+            }
+        }
+    }
+}
 ```
 

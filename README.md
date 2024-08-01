@@ -1,5 +1,25 @@
 ## Congming Zhu's blog 
 
+
+
+<p align="center">
+    <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/t/cmzhublog/cmzhu.cn-blog">
+    <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/w/cmzhublog/cmzhu.cn-blog">
+   <br />
+    <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/cmzhublog/cmzhu.cn-blog">
+</p>
+
+​    
+
+<p>
+    <img  src="https://github-readme-stats.vercel.app/api?username=cmzhublog&show_icons=true&theme=radical">
+</p>
+
+
+
+
+
+
 ### 自我介绍
 
 本人朱聪明, 毕业于成都师范学院; 大学专业为 计算机科学与技术 , 曾就职于：

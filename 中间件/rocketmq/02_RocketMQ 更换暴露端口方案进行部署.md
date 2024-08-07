@@ -59,6 +59,8 @@ networks:
 
 调整了broker 的配置文件， 和启动命令； 以及调整了需要暴露的端口信息；
 
+broker.conf 配置文件如下
+
 ```bash
 brokerClusterName = DefaultCluster
 brokerName = broker-a
@@ -110,7 +112,6 @@ haListenPort参数是HAService服务组件使用，用于Broker的主从同步�
 #haService中使用
 haListenPort=10912
 ```
-
 
 
 

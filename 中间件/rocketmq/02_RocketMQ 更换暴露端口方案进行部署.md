@@ -68,6 +68,7 @@ fileReservedTime = 48
 brokerRole = ASYNC_MASTER
 flushDiskType = ASYNC_FLUSH
 # add
+maxMessageSize = 65536
 autoCreateSubscriptionGroup = true ## 允许 Broker 自动创建订阅组
 autoCreateTopicEnable = true  ## 允许自动创建topic
 namesrvAddr = 192.168.101.100:39876  ## namesrv 的主机暴露地址

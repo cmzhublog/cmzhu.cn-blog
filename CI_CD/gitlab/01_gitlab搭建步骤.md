@@ -68,7 +68,7 @@ services:
       GITLAB_ROOT_PASSWORD: pDwaqrvCi8VCxN
       GITLAB_HTTPS: false
       GITLAB_OMNIBUS_CONFIG: |
-        # external_url 'https://gitlab.cmzhu.cn'
+        # external_url 'https://gitlab.cmzhu.cn' # 此处的端口是什么， 默认对应http or https 协议启动的网络端口就是哪一个？
         gitlab_rails['lfs_enabled'] = true
         gitlab_rails['gitlab_shell_ssh_port'] = 20022
         gitlab_rails['time_zone'] = 'Asia/Shanghai'

@@ -46,8 +46,6 @@ mkdir -p /nfs/harbor/trivy
 
 创建PV 和 PVC 
 
-
-
 harbor-pv.yaml
 
 ```yaml

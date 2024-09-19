@@ -103,3 +103,82 @@ DOCKER_BUILDKIT=1: 表示使用buildkit 来进行打包， 如果还是按照原
 - -f : 指定Dockerfile 的地址， 如果没有就默认使用当前目录下的Dockerfile
 
 - --push: 指将镜像推送到镜像仓库
+
+### **2.4 问题**
+
+1、**描述**
+
+```bash
+$ docker buildx build --platform linux/amd64,linux/arm64 -t repo/hello . --push
+[+] Building 10.0s (1/1) FINISHED
+=> ERROR [internal] booting buildkit 10.0s
+=> => pulling image moby/buildkit:buildx-stable-1 10.0s
+
+> [internal] booting buildkit:
+
+error: Error response from daemon: Get [https://registry-1.docker.io/v2/:](https://registry-1.docker.io/v2/:) dial tcp: lookup r
+
+```
+
+**原因：** Docker默认去`https://registry-1.docker.io`拉镜像，因为不能联网，所有连接错误。
+
+**解决方法：** 外网下载镜像，再导入内网。
+
+```bash
+# 外网节点拉取镜像
+$ docker pull moby/buildkit:buildx-stable-1@sha256:273b61ca4f538c120c8555b4e7c59e903bd5bdfc72d93439e75f46fcf1f4e135
+
+# 外网节点导出镜像
+$ docker save -o moby_buildkit_buildx-stable-x-arm64.tar 9b3c7392ac9e
+
+# 内网节点导入镜像
+$ docker load -i moby_buildkit_buildx-stable-x-arm64.tar 9b3c7392ac9e
+$ docker tag 9b3c7392ac9e moby/buildkit:buildx-stable-1
+
+```
+
+2、问题二
+
+**描述：**
+
+```bash
+error: failed to solve: a.b.c:5000/centos8_gcc11_download: failed to do request: Head "[https://a.b.c:5000/v2/centos8_gcc11_download/manifests/latest]": dial tcp: lookup a.b.c on 192.168.0.3:53: read udp 172.17.0.3:48437->192.168.0.3:53: i/o timeout
+
+```
+
+**原因：**
+
+1. 它默认去网址https请求元数据，但是自己搭建的仓库没提供https的服务；
+2. 机器不能解析`a.b.c`的IP地址。
+
+**针对原因一，解决方法如下**：
+
+参考[github issures 336](https://github.com/docker/buildx/issues/336)，主要步骤如下：
+
+1. 创建buildkitd.toml文件，模板可参考[buildkitd.toml.md](https://github.com/moby/buildkit/blob/master/docs/buildkitd.toml.md)
+2. 以上模板不需要的内容可去掉，添加如下内容：(注意http的值为true)
+
+```bash
+$ cat /etc/buildkit/buildkitd.toml 
+[registry."a.b.c:5000"]
+  mirrors = ["a.b.c:5000"]
+  http = true
+  insecure = true
+
+```
+
+3. 删除旧的builder，重新创建新的builder。
+
+```bash
+$ docker buildx rm mybuilder
+$ docker buildx create --use --name newbuilder --config buildkitd.toml
+
+```
+
+针对原因二，解决方法如下：
+
+参考[github issues 191](https://github.com/docker/buildx/issues/191)
+
+- 如果你的机器安装了DNS服务，请确保该服务可用，主要涉及文件 /etc/resolv.conf 和 /etc/hosts
+- 如果未安装DNS服务，可能需要将Dockerfile中的域名a.b.c改为真实的IP地址即可。
+  

@@ -14,7 +14,7 @@ services:
       resources:
         limits:
           cpus: '0.5'
-          memory: 1Gi
+          memory: 1G
         reservations:
           cpus: '0.25'
           memory: 200M
@@ -42,7 +42,7 @@ services:
       resources:
         limits:
           cpus: '0.5'
-          memory: 1Gi
+          memory: 1G
         reservations:
           cpus: '0.25'
           memory: 200M
@@ -67,14 +67,6 @@ services:
 
   core:
     image: jumpserver/jms_core:${VERSION}
-    deploy:
-      resources:
-        limits:
-          cpus: '0.5'
-          memory: 1Gi
-        reservations:
-          cpus: '0.25'
-          memory: 200M
     container_name: jms_core
     command: start web
     deploy:
@@ -103,14 +95,6 @@ services:
 
   celery:
     image: jumpserver/jms_core:${VERSION}
-    deploy:
-      resources:
-        limits:
-          cpus: '0.5'
-          memory: 1Gi
-        reservations:
-          cpus: '0.25'
-          memory: 200M
     container_name: jms_celery
     command: start task
     deploy:
@@ -139,14 +123,6 @@ services:
 
   koko:
     image: jumpserver/jms_koko:${VERSION}
-    deploy:
-      resources:
-        limits:
-          cpus: '0.5'
-          memory: 1Gi
-        reservations:
-          cpus: '0.25'
-          memory: 200M
     container_name: jms_koko
     privileged: true
     deploy:
@@ -177,14 +153,6 @@ services:
 
   guacd:
     image: jumpserver/guacd:1.5.5-bookworm
-    deploy:
-      resources:
-        limits:
-          cpus: '0.5'
-          memory: 1Gi
-        reservations:
-          cpus: '0.25'
-          memory: 200M
     container_name: jms_guacd
     user: root
     deploy:
@@ -207,14 +175,6 @@ services:
 
   lion:
     image: jumpserver/jms_lion:${VERSION}
-    deploy:
-      resources:
-        limits:
-          cpus: '0.5'
-          memory: 1Gi
-        reservations:
-          cpus: '0.25'
-          memory: 200M
     container_name: jms_lion
     deploy:
       mode: replicated
@@ -242,14 +202,6 @@ services:
 
   chen:
     image: jumpserver/jms_chen:${VERSION}
-    deploy:
-      resources:
-        limits:
-          cpus: '0.5'
-          memory: 1Gi
-        reservations:
-          cpus: '0.25'
-          memory: 200M
     container_name: jms_chen
     deploy:
       mode: replicated
@@ -277,14 +229,6 @@ services:
 
   web:
     image: jumpserver/jms_web:${VERSION}
-    deploy:
-      resources:
-        limits:
-          cpus: '0.5'
-          memory: 1Gi
-        reservations:
-          cpus: '0.25'
-          memory: 200M
     container_name: jms_web
     deploy:
       mode: replicated

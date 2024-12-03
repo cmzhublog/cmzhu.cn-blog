@@ -82,5 +82,34 @@ ssh -R 0.0.0.0:10090:10.24.2.1:9090 cmzhu@cmzhu.cn
 
 执行上述命令后, 就可以通过访问`cmzhu.cn:10090` 来访问`10.24.2.1:9090` 端口
 
+### ssh 配置文件
+
+ssh 可以从以下三处获取配置文件
+
+- 命令行选项
+- 用户配置文件 (~/.ssh/config)
+- 系统配置文件 (/etc/ssh/ssh_config)
+
+```bash
+$ cat ~/.ssh/config
+Host *
+    User root
+    Port 22
+
+Host cmzhu
+    HostName 192.168.101.70
+    User cmzhu
+    Port 22
+    IdentityFile ~/.ssh/id_rsa
+
+Host gitlab
+    HostName 192.168.101.71
+    User root
+    Port 22
+    IdentityFile ~/.ssh/id_rsa
+```
+
+
+
 
 

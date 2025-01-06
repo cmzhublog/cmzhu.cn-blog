@@ -77,5 +77,7 @@ $ kubeadm kubeconfig user --client-name=test > test-kubeconfig.yaml
 
 ```bash
 $ kubectl get pod --kubeconfig=test-kubeconfig.yaml -A
+
+
 ```
 

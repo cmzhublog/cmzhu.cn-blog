@@ -13,24 +13,34 @@ dateCreated: 2023-05-11T07:15:48.684Z
 `Helm` 部署`ingress`
 
 ```bash
-helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
-helm repo update
+$ helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+$ helm repo update
 
 
-cat >> ./values.yml << EOF
+$ cat >> ./values.yml << EOF
 controller:
   hostNetwork: true
   dnsPolicy: ClusterFirstWithHostNet
-dhParam:
+  image:
+    ## Keep false as default for now!
+    registry: hub.test.com:8443/3rdimages/registry.k8s.io
+    # digest 根据实际情况进行填写
+    digest: sha256:38b51d8833e79d97d4adf825e0bf893e322d19be54ff65a88d9320139a68adfb
   nodeSelector:
     kubernetes.io/os: linux
     ingress: "true"
-  kind: DaemonSet
+  kind: Deployment
+  admissionWebhooks:
+    patch:
+      image:
+        registry: hub.test.com:8443/3rdimages/registry.k8s.io
+        # digest 根据实际情况进行填写
+        digest: sha256:6b33a8870727f3e7de55d88283cc778e1775d8099c36c45d095aa831d0f0fbc7 
 EOF
 
-kubectl create ns ingress-nginx
+$ kubectl create ns ingress-nginx
 
-helm \
+$ helm \
 upgrade --install \
 -n ingress-nginx \
 ingress-nginx \

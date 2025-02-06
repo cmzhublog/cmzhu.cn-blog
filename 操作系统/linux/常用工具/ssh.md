@@ -110,6 +110,24 @@ Host gitlab
     
 ```
 
+如果github 访问异常， 也可以修改配置
+
+<img src="ssh.assets/image-20250206133618976.png" alt="image-20250206133618976" style="zoom:50%;" />
+
+```bash
+Host github.com
+    Hostname ssh.github.com
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/id_rsa
+    Port 443
+
+Host gitlab.com
+    Hostname altssh.gitlab.com
+    Port 443
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/id_rsa
+```
+
 
 
 

@@ -1,13 +1,3 @@
----
-title: kubeadm 安装 k8s
-description: 
-published: true
-date: 2023-09-09T08:11:49.738Z
-tags: k8s
-editor: markdown
-dateCreated: 2023-02-03T10:13:47.274Z
----
-
 # kubeadm 安装 k8s
 
 
@@ -406,11 +396,11 @@ cat >> ./values.yml << EOF
 controller:
   hostNetwork: true
   dnsPolicy: ClusterFirstWithHostNet
-dhParam:
   nodeSelector:
     kubernetes.io/os: linux
     ingress: "true"
-  kind: DaemonSet
+  kind: Deployment
+  hostNetwork: true
 EOF
 
 kubectl create ns ingress-nginx

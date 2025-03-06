@@ -28,3 +28,10 @@ metadata:
 
 3、配置完成之后重启ingress-nginx-controller 容器
 
+4、X-Forwarded-for 会带有中间所有层的IP，比如经过nginx -> ingress 所存储的IP 形式为
+
+```bash
+ClientIP(真实IP) -> Proxy01IP -> Proxy02IP ... 
+likes: 222.209.85.222[,192.168.101.122]
+```
+

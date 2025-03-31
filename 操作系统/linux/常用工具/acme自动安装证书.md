@@ -7,7 +7,7 @@
 ## 下载acme 安装脚本并执行
 $ curl https://get.acme.sh | sh
 ## 设置默认的ca 是letsencrypt
-$ acme.sh --set-default-ca --server letsencrypt
+$ /root/.acme.sh/acme.sh --set-default-ca --server letsencrypt
 ## 生成 cdn.cmzhu.cn和www.cdn.cmzhu.cn 的证书
 $ /root/.acme.sh/acme.sh --issue --nginx -d cdn.cmzhu.cn -d www.cdn.cmzhu.cn
 ## 服务器安装证书

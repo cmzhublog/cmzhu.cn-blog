@@ -85,7 +85,7 @@ TriggeredBy: ● logrotate.timer
 Jul 04 14:06:54 bqdev01 systemd[1]: Starting Rotate log files...
 Jul 04 14:06:54 bqdev01 systemd[1]: logrotate.service: Deactivated successfully.
 Jul 04 14:06:54 bqdev01 systemd[1]: Finished Rotate log files.
-``` 
+```
 
 查看 logrotate.service 的配置
 ```bash
@@ -200,10 +200,19 @@ logrotate 配置详细参数如下
     endscript
 }
 ```
-  
+
 如何手动之行日志转存
 
 ```bash
 > logrotate -f /etc/logrotate.d/biggateway
 
 ```
+
+
+
+如何解压压缩后的压缩文件
+
+```bash
+$ gunzip access.log-20250331.gz
+```
+

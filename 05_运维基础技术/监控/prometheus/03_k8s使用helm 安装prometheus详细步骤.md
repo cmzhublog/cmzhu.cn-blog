@@ -130,7 +130,7 @@ grafana.ini:
   server:
     domain: monitoring.example.com
     root_url: "%(protocol)://%(domain)s/grafana"
-    serve_from_sub_path: true:q
+    serve_from_sub_path: true
 ingress:
   enabled: true
   ingressClassName: nginx
@@ -170,7 +170,7 @@ NOTES:
    grafana.monitor.svc.cluster.local
 
    If you bind grafana to 80, please update values in values.yaml and reinstall:
-   ```
+```
    securityContext:
      runAsUser: 0
      runAsGroup: 0
@@ -190,7 +190,7 @@ NOTES:
      http://monitoring.downloadcenter.site
 
 3. Login with the password from step 1 and the username: admin
-```
+   ```
 
 问题处理：
 

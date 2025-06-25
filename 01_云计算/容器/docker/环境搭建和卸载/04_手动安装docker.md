@@ -74,3 +74,9 @@ $ systemctl status docker
 $ systemctl restart docker
 ```
 
+5、安装docker-compose 
+
+```bash
+$ wget https://github.com/docker/compose/releases/download/v2.37.2/docker-compose-linux-x86_64 -O /usr/bin/docker-compose && chmod +x /usr/bin/docker-compose
+```
+

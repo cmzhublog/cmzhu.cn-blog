@@ -47,7 +47,7 @@ openebs             	https://openebs.github.io/charts
 3、 更新
 
 ```bash
-[root@cmzhu cmzhu]# helm repo upgrade
+[root@cmzhu cmzhu]# helm repo update
 ```
 
 4、 拉取`values.yml`

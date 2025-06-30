@@ -6,6 +6,26 @@
 
 ### 部署过程
 
+##### 前置
+
+1、 害怕集群资源不够，可使用ResourceQuota对集群的资源进行限制
+
+```yaml
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: devops-resources
+  namespace: devops
+spec:
+  hard:
+    requests.cpu: "4"
+    requests.memory: 8Gi
+    limits.cpu: "8"
+    limits.memory: 16Gi
+```
+
+
+
 1、 根据文档描述，本次需要部署 prometheus 服务，从官方[文档](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus)中可以看到，Prometheus 需要依赖于如下四个服务；
 
 ![image-20250623104641612](03_k8s使用helm 安装prometheus详细步骤.assets/image-20250623104641612.png)
@@ -37,7 +57,7 @@ $ helm repo update
 $ helm pull --untar prometheus-community/prometheus
 ```
 
-6、修改配置，不部署alertmanager
+6、修改配置，不部署certmanager
 
 7、使用helm 命令对服务进行部署，部署完成如下
 
@@ -170,19 +190,19 @@ NOTES:
    grafana.monitor.svc.cluster.local
 
    If you bind grafana to 80, please update values in values.yaml and reinstall:
-```
    securityContext:
      runAsUser: 0
      runAsGroup: 0
      fsGroup: 0
 
    command:
+
    - "setcap"
    - "'cap_net_bind_service=+ep'"
    - "/usr/sbin/grafana-server &&"
    - "sh"
    - "/run.sh"
-   ```
+   
    Details refer to https://grafana.com/docs/installation/configuration/#http-port.
    Or grafana would always crash.
 
@@ -190,7 +210,26 @@ NOTES:
      http://monitoring.downloadcenter.site
 
 3. Login with the password from step 1 and the username: admin
-   ```
+```
+### 部署 Cadvisor
+
+[参考文档](helm repo add ckotzbauer https://ckotzbauer.github.io/helm-charts)
+
+1、将[cadvisor](https://github.com/ckotzbauer/helm-charts/tree/main/charts/cadvisor) 仓库加入到本地helm 配置
+
+```bash
+$ helm repo add ckotzbauer https://ckotzbauer.github.io/helm-charts
+$ helm repo update
+
+```
+
+
+
+
+
+
+
+
 
 问题处理：
 

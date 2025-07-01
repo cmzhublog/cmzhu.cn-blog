@@ -118,6 +118,89 @@ promethesu-prometheus-pushgateway-674bc4555c-cqrrk   1/1     Running   0        
 promethesu-prometheus-server-6fdf6d65bc-drlr4        2/2     Running   0          7m43s
 ```
 
+### 部署Prometheus-Operator-crds
+
+[参考文档](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-operator-crds)
+
+步骤
+
+1、 因前面已经将仓库加入到本地源，所以以下两步可不执行
+
+```bash
+$ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+$ helm repo update
+```
+
+2、拉取helm-charts的变量，并修改对应变量
+
+```bash
+$ helm show values prometheus-community/prometheus-operator-crds > values.yaml
+```
+
+3、开始安装
+
+```bash
+$ helm upgrade --install -n devops --create-namespace prometheus-operator-crds prometheus-community/prometheus-operator-crds -f ./values.yaml 
+
+Release "prometheus-operator-crds" does not exist. Installing it now.
+NAME: prometheus-operator-crds
+LAST DEPLOYED: Tue Jul  1 10:29:13 2025
+NAMESPACE: devops
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+```
+
+### 部署 prometheus-operator-admission-webhook
+
+步骤
+
+1、 因前面已经将仓库加入到本地源，所以以下两步可不执行
+
+```bash
+$ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+$ helm repo update
+```
+
+2、拉取helm-charts的变量，并修改对应变量
+
+```bash
+$ helm show values prometheus-community/prometheus-operator-admission-webhook > values.yaml
+```
+
+3、开始安装
+
+```bash
+$ helm upgrade --install -n devops --create-namespace prometheus-operator-admission-webhook prometheus-community/prometheus-operator-admission-webhook -f ./values.yaml 
+
+Release "prometheus-operator-admission-webhook" does not exist. Installing it now.
+NAME: prometheus-operator-admission-webhook
+LAST DEPLOYED: Tue Jul  1 11:32:59 2025
+NAMESPACE: monitor
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+See https://prometheus-operator.dev/docs/user-guides/webhook/ for more information on the admission webhook.
+
+1. Get the webhook's URL by running these commands:
+
+  export POD_NAME="$(kubectl get pods --namespace monitor -l "app.kubernetes.io/name=prometheus-operator-admission-webhook,app.kubernetes.io/instance=prometheus-operator-admission-webhook" -o jsonpath="{.items[0].metadata.name}")"
+  export CONTAINER_PORT="$(kubectl get pod --namespace monitor $POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")"
+
+2. Set port forwarding:
+
+   kubectl --namespace monitor port-forward $POD_NAME 8080:$CONTAINER_PORT
+
+3. Verify the admission-webhook's deployment by checking its health endpoint by command
+
+   curl -k https://127.0.0.1:8080/healthz
+
+   JSON-formatted "status: up" is expected at that point.
+```
+
+### 
+
 ### 部署Grafana 
 
 [参考文档](https://github.com/grafana/helm-charts)
@@ -211,6 +294,10 @@ NOTES:
 
 3. Login with the password from step 1 and the username: admin
 ```
+
+
+
+
 ### 部署 Cadvisor
 
 [参考文档](helm repo add ckotzbauer https://ckotzbauer.github.io/helm-charts)
@@ -258,3 +345,6 @@ EOF
 
 ```
 
+### 问题2
+
+按照上述方案安装的prometheus 不能在K8S 中使用ServiceMonitor 等CRD ，解决是重新安装kube-prometheus-stack

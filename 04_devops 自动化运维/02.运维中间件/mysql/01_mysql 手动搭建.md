@@ -34,10 +34,19 @@ $ chown -R mysql:mysql /usr/local/mysql
 $ chmod -R 755 /usr/local/mysql
 ```
 
-5、 启动 mysql 服务初始化
+5、 启动 mysql 服务初始化,会自动创建默认初始化密码，记录下密码留给下一步使用
 
 ```bash
 $ cd /usr/local/mysql/bin && ./mysqld --initialize --user=mysql --datadir=/usr/local/mysql/data
+2025-07-07T06:09:27.839736Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2025-07-07T06:09:28.276232Z 0 [Warning] InnoDB: New log files created, LSN=45790
+2025-07-07T06:09:28.347509Z 0 [Warning] InnoDB: Creating foreign key constraint system tables.
+2025-07-07T06:09:28.403225Z 0 [Warning] No existing UUID has been found, so we assume that this is the first time that this server has been started. Generating a new UUID: f0a222b4-5af8-11f0-b298-fa163e416f61.
+2025-07-07T06:09:28.405085Z 0 [Warning] Gtid table is not ready to be used. Table 'mysql.gtid_executed' cannot be opened.
+2025-07-07T06:09:29.111963Z 0 [Warning] A deprecated TLS version TLSv1 is enabled. Please use TLSv1.2 or higher.
+2025-07-07T06:09:29.111985Z 0 [Warning] A deprecated TLS version TLSv1.1 is enabled. Please use TLSv1.2 or higher.
+2025-07-07T06:09:29.112422Z 0 [Warning] CA certificate ca.pem is self signed.
+2025-07-07T06:09:29.252353Z 1 [Note] A temporary password is generated for root@localhost: N1lIEqajh)zG
 ```
 
 6、创建mysql 启动参数文件 my.cnf

@@ -16,6 +16,23 @@ $ apt update
 $ apt install libncurses5 libaio1 libtinfo5 -y
 ```
 
+Rocky Linux 9 ,如果遇见如下报错，可以软链新版本的包，解决执行mysql 时报错
+
+```bash
+### 报错内容
+$ ./mysql
+./mysql: error while loading shared libraries: libncurses.so.5: cannot open shared object file: No such file or directory
+```
+
+可手动处理，
+
+```bash
+$ ln -s /usr/lib64/libncurses.so.6 /usr/lib64/libncurses.so.5
+$ ln -s /usr/lib64/libtinfo.so.6 /usr/lib64/libtinfo.so.5
+```
+
+
+
 3、 开始安装mysql,手动下载安装包， 并解压mysql
 
 ```bash
@@ -64,11 +81,11 @@ socket=/tmp/mysql.sock
 symbolic-links=0
 [mysqld_safe]
 log-error=/var/log/mysql/error.log
-pid-file=/var/run/mysql/mysql.pid
+pid-file=/usr/local/mysql/mysql.pid
 ```
 
 ```bash
-$ chown mysql.mysql my.cnf
+$ chown mysql.mysql /etc/my.cnf
 ```
 
 

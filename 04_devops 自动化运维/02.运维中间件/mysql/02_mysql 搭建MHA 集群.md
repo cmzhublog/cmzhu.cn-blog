@@ -374,6 +374,28 @@ $ systemctl daemon-reload
 $ systemctl restart mha-app
 ```
 
+14、手动切换主操作,执行如下命令后，一直yes 就可以切换主
+
+```bash
+$ masterha_master_switch --master_state=alive --conf=/etc/mha/mha.conf
+```
+
+
+
+15、切换完成后恢复成原状态步骤,恢复步骤是将节点重新加入集群，就以master-bk 为主
+
+```sql
+## 重置配置
+> RESET SLAVE ALL
+## 加入集群
+> CHANGE MASTER TO
+    MASTER_HOST='mha-master-bk',
+    MASTER_USER='repl',
+    MASTER_PASSWORD='bFgs4TDJ!kK@RNQM',
+    MASTER_AUTO_POSITION=1;
+> START SLAVE;
+```
+
 
 
 

@@ -37,7 +37,7 @@ $ /root/.acme.sh/acme.sh --renew -d *.cmzhu.cn  \
 --yes-I-know-dns-manual-mode-enough-go-ahead-please 
 
 ### 安装证书
-/root/.acme.sh/acme.sh --install-cert -d *.techstarph.com  \
+/root/.acme.sh/acme.sh --install-cert -d *.cmzhu.cn  \
     --key-file /etc/nginx/ssl/acme.cmzhu.cn/acme.cmzhu.cn.key \
     --fullchain-file /etc/nginx/ssl/acme.cmzhu.cn/acme.cmzhu.cn.pem
 ```

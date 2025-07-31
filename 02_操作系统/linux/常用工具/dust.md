@@ -46,7 +46,7 @@ Usage: dust -z 4000000 (Exclude output files/directories below size 4MB)
 1、 统计当前目录中的所有文件和所有文件夹的大小
 
 ```bash
-dust -d 1
+dust -d 1 .
 ```
 
 

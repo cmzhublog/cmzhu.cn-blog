@@ -44,7 +44,7 @@ $ helm repo add prometheus-community https://prometheus-community.github.io/helm
 $ helm search repo prometheus-community
 ```
 
-4、 开始拉取Prometheus 的helm-charts ，[参考文档](helm repo add prometheus-community https://prometheus-community.github.io/helm-charts)
+4、 开始拉取Prometheus 的helm-charts ，[参考文档](https://prometheus-community.github.io/helm-charts)
 
 ```bash
 $ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
@@ -300,7 +300,7 @@ NOTES:
 
 ### 部署 Cadvisor
 
-[参考文档](helm repo add ckotzbauer https://ckotzbauer.github.io/helm-charts)
+[参考文档](https://ckotzbauer.github.io/helm-charts)
 
 1、将[cadvisor](https://github.com/ckotzbauer/helm-charts/tree/main/charts/cadvisor) 仓库加入到本地helm 配置
 

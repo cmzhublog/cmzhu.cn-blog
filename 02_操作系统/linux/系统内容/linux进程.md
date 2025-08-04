@@ -1,13 +1,3 @@
----
-title: Linux 进程学习
-description: 
-published: true
-date: 2023-03-01T09:58:39.169Z
-tags: linux
-editor: markdown
-dateCreated: 2023-03-01T09:51:13.826Z
----
-
 # linux 进程用户交互
 
 

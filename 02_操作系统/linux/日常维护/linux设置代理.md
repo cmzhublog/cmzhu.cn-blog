@@ -47,7 +47,7 @@ noproxy() {
 执行指令开启代理
 
 ```bash
-proxy
+$ proxy
 ```
 
 
@@ -55,6 +55,6 @@ proxy
 执行指令关闭代理
 
 ```bash
-noproxy
+$ noproxy
 ```
 

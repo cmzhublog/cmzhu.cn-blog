@@ -1,13 +1,3 @@
----
-title: beegfs测试部署
-description: 
-published: true
-date: 2023-04-12T02:02:21.066Z
-tags: linux
-editor: markdown
-dateCreated: 2023-04-12T02:02:21.066Z
----
-
 # beegfs 安装
 
 本次实验通过 hyper-v 虚拟机来完成

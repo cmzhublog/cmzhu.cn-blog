@@ -1,15 +1,3 @@
----
-title: k8s 常用命令
-description: 
-published: true
-date: 2023-04-10T02:11:45.382Z
-tags: k8s
-editor: markdown
-dateCreated: 2022-12-19T06:43:35.804Z
----
-
-# k8s 常用命令
-
 ## k8s 常用命令
 
 - 获取命名空间下的所有在使用镜像
@@ -160,8 +148,9 @@ kubectl get deployments -n userbox -o json | jq '.items[] | {name: .metadata.nam
 ```bash
 k get pod -o jsonpath='{.items[*].spec.containers[*].image}' | sed 's/ /\n/g'
 ```
-- 污点和容忍度
-[污点和容忍度](/k8s/k8s常用命令/污点和容忍度)
+- [污点和容忍度](./01_污点和容忍度)
+
+  
 
 
 

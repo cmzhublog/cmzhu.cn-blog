@@ -1,14 +1,4 @@
----
-title: postgres 数据库增量同步
-description: 
-published: true
-date: 2023-04-07T02:30:04.246Z
-tags: postgres
-editor: markdown
-dateCreated: 2023-04-07T02:25:59.736Z
----
-
-# 数据库增量同步 (待验证)
+## 数据库增量同步 (待验证)
 
 导出源数据库的完整数据集：
 ```

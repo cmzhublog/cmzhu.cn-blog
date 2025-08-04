@@ -1,14 +1,4 @@
----
-title: postgres最大链接数
-description: 
-published: true
-date: 2023-01-10T08:40:16.265Z
-tags: postgres
-editor: markdown
-dateCreated: 2022-11-29T08:53:17.501Z
----
-
-# postgres 最大连接数
+## postgres 最大连接数
 
 postgres 默认的 max_connections=100; 但是在实际的使用过程中,postgres 可能会超过这个值;这时就需要修改这个配置
 
@@ -25,7 +15,8 @@ vim /var/lib/postgresql/data/postgresql.conf
 修改max_connections 的值为需要的值
 ```
 
-## 查询postgres 连接socket
+### 查询postgres 连接socket
+
 使用以下sql 可以查询连接,
 
 ```bash

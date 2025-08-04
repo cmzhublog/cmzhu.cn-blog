@@ -1,14 +1,4 @@
----
-title: postgres迁移数据库
-description: 
-published: true
-date: 2023-01-10T10:23:28.369Z
-tags: 中间件
-editor: markdown
-dateCreated: 2023-01-10T08:36:11.267Z
----
-
-# postgres 数据库备份
+## postgres 数据库备份
 
 ## 导出数据
 

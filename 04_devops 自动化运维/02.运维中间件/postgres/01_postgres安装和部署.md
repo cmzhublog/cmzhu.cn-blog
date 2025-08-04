@@ -1,20 +1,9 @@
----
-title: postgres 主页
-description: 
-published: true
-date: 2023-04-07T02:30:37.378Z
-tags: postgres
-editor: markdown
-dateCreated: 2022-11-29T08:37:26.236Z
----
-
-# Postgres 主页
-
-## 安装
+## postgres 安装部署
 
 1、 docker-compose 安装 
 postgres docker-compose 搭建,其中 pgadmin4是属于pg 的前端界面操作. 
 docker-compose.yaml
+
 ```bash
       # Use postgres/example user/password credentials 
     # https://hub.docker.com/_/postgres?tab=description

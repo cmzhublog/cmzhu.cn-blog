@@ -1,24 +1,12 @@
----
-title: postgres免密登录
-description: 
-published: true
-date: 2023-01-16T02:45:06.511Z
-tags: 中间件
-editor: markdown
-dateCreated: 2023-01-16T02:45:06.511Z
----
+## postgres 免密登录
 
-# postgres 免密登录
-
-## 背景
+### 背景
 
 1、 postgres 在使用时会要求输入密码登录数据库,这样会对脚本实现等造成困扰
 
+### 解决方案
 
-
-## 解决方案
-
-### 1、 环境变量
+#### 1、 环境变量
 
 PGPASSWORD: PGPASSWORD 是postgresql 的系统环境变量,在客户端连接远程数据库时会优先使用此密码
 
@@ -31,9 +19,7 @@ PGPASSWORD='abc123!' psql -U postgres
 
 >  注意: 使用环境变量运行,不会弹出密码提示框,但是从安全性考虑,这种方法并不推荐
 
-
-
-### 2、 使用密码文件
+#### 2、 使用密码文件
 
 在 /home/postgres/.pgpass 隐藏文件中,保存账户密码,这样也可避免登录时弹出输入密码提示.
 

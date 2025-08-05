@@ -2,12 +2,18 @@
 
 ### 实现逻辑
 
-1、
+1、 获取当前运行的需要替换的容器，并使用OLD_CONTAINERS 对容器进行记录
 
+2、 将需要替换的容器进行扩容到SCALE_INSTANCES 的副本数
 
+3、 验证health check ，新容器启动完成后，清理掉旧容器
+
+4、 调整 reload nginx 配置，使容器解析到新容器上去
+
+参考脚本如下：
 
 ```bash
-SERVICE_BASE="mkdocs"
+SERVICE_BASE=$(basename $(dirname $(realpath ${0})))
 SERVICE_NAME="mkdocs"
 SCALE_INSTANCES=2
 HEALTH_CHECK_TIMEOUT=300

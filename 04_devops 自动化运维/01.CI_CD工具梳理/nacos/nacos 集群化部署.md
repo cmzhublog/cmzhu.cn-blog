@@ -148,3 +148,111 @@ spec:
     value: 2g
 ```
 
+### 集群化部署yaml
+
+如果不想使用上述方案部署，也可以直接使用yaml 文件部署nacos 集群
+
+```yaml
+apiVersion: apps/v1
+kind: StatefulSet 
+metadata:
+  name: nacos-cluster
+  namespace: prod
+spec:
+  serviceName: nacos-headless 
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nacos-cluster
+  template:
+    metadata:
+      labels:
+        app: nacos-cluster
+    spec:
+      affinity:
+      containers:
+      - name: nacos
+        image: nacos/nacos-server:v2.4.3
+        env:
+        - name: MODE
+          value: "cluster"
+        - name: NACOS_SERVERS
+          value: "nacos-cluster-0.nacos-headless.prod.svc.cluster.local:8848 nacos-cluster-1.nacos-headless.prod.svc.cluster.local:8848 nacos-cluster-2.nacos-headless.prod.svc.cluster.local:8848"
+        - name: SPRING_DATASOURCE_PLATFORM
+          value: "mysql"
+        - name: MYSQL_SERVICE_HOST
+          value: "mysql.host"
+        - name: MYSQL_SERVICE_PORT
+          value: "3306"
+        - name: MYSQL_SERVICE_DB_NAME
+          value: "nacos"
+        - name: MYSQL_SERVICE_USER
+          value: "nacos"
+        - name: MYSQL_SERVICE_PASSWORD
+          value: "password"
+        - name: NACOS_AUTH_ENABLE
+          value: "true"  
+        - name: NACOS_AUTH_IDENTITY_KEY
+          value: "nacos"  
+        - name: NACOS_AUTH_IDENTITY_VALUE
+          value: "nacos"  
+        - name: NACOS_AUTH_TOKEN
+          value: "aHVpcm9uZ2tlamkxMDEwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA="
+        - name: JVM_XMS
+          value: "1g"
+        - name: JVM_XMX
+          value: "2g"
+        ports:
+        - containerPort: 8848
+        - containerPort: 9848
+        volumeMounts:
+        - name: nacos-log
+          mountPath: /home/nacos/logs
+  volumeClaimTemplates:  
+  - metadata:
+      name: nacos-log
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 5Gi
+      storageClassName: "pidn-cnfs-daa-02"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nacos-headless
+  namespace: prod
+spec:
+  clusterIP: None
+  selector:
+    app: nacos-cluster
+  ports:
+    - name: http
+      port: 8848
+      targetPort: 8848
+    - name: grpc
+      port: 9848
+      targetPort: 9848
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nacos-svc
+  namespace: prod
+spec:
+  type: ClusterIP  
+  selector:
+    app: nacos-cluster
+  ports:
+    - name: http
+      port: 8848
+      targetPort: 8848
+    - name: grpc
+      port: 9848
+      targetPort: 9848
+
+```
+

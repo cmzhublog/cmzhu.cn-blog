@@ -58,7 +58,7 @@ $ systemctl restart supervisord
 7、如何使用supervisior启动一个java 服务
 
 ```bash
-$ cat > /etc/supervisior.d/test.ini <<EOF
+$ cat > /etc/supervisord.d/test.ini <<EOF
 [program:test]
 directory=/opt/test # 服务工作目录
 #command=/usr/bin/java -Xms5g -Xmx5g -Duser.timezone=America/Mexico_City -jar push-center-1.0.0-SNAPSHOT.jar
@@ -70,7 +70,7 @@ stdout_logfile=/opt/clc-push/clc-push.log # 日志输出位置
 EOF
 
 完整例子如下：
-$ cat > /etc/supervisior.d/test.ini <<EOF
+$ cat > /etc/supervisord.d/test.ini <<EOF
 [program:test]
 directory=/opt/test 
 command=/usr/bin/java -jar test.jar -Duser.timezone=GMT+07 --spring.profiles.active=prod -Xmx512m -Xms512m 

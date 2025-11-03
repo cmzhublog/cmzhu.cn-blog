@@ -15,7 +15,6 @@ Velero 包括:
 
 安装步骤依赖
 
-- minio
 - kubernetes 1.16 >
 
 1、下载需要使用到的文件

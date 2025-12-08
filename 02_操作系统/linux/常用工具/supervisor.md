@@ -82,3 +82,38 @@ EOF
 
 ```
 
+8、完整安装脚本如下
+
+```bash
+#!/bin/bash
+pip3 install supervisor
+echo_supervisord_conf | sudo tee /etc/supervisord.conf  
+
+cat > /etc/systemd/system/supervisord.service <<EOF
+[Unit]
+Description=Supervisor process control system
+After=network.target  
+[Service]
+Type=forking          
+ExecStart=/usr/local/bin/supervisord -c /etc/supervisord.conf  
+ExecStop=/usr/local/bin/supervisord/supervisorctl shutdown  
+ExecReload=/usr/local/bin/supervisorctl reload  
+User=root             
+Restart=on-failure    
+RestartSec=10s         
+[Install]
+WantedBy=multi-user.target
+EOF
+
+systemctl daemon-reload
+
+systemctl enable --now supervisord
+
+mkdir -p /etc/supervisord.d/
+sed -i "s#;\[include\]#\[include\]#g"  /etc/supervisord.conf
+
+sed -i "s#;files = relative/directory/\*\.ini#files = /etc/supervisord\.d/\*\.ini#g" /etc/supervisord.conf 
+
+systemctl restart supervisord
+```
+

@@ -78,8 +78,8 @@ $ helm install apollo-portal \
     --set portaldb.password=123456 \
     --set portaldb.service.enabled=true \
     --set config.envs="dev\,pro" \
-    --set config.metaServers.dev=http://apollo-service-dev-apollo-configservice:8080 \
-    --set config.metaServers.pro=http://apollo-service-pro-apollo-configservice:8080 \
+    --set config.metaServers.dev=http://apollo-service-apollo-configservice:8080 \
+    --set config.metaServers.pro=http://apollo-service-apollo-configservice:8080 \
     --set replicaCount=1 \
     -n db --create-namespace \
     apollo/apollo-portal

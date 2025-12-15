@@ -8,7 +8,7 @@ editor: markdown
 dateCreated: 2022-12-14T09:59:30.698Z
 ---
 
-# iperf 测试网速
+# Iperf3 测试网速
 
 ## 软件下载
 
@@ -23,7 +23,7 @@ dnf install -y iperf3
 iperf3 -s
 ```
 
-### 服务端
+### 客户端
 ```bash
 iperf3 -c 10.24.2.1 
 ```
@@ -40,7 +40,7 @@ Connecting to host 10.24.2.1, port 5201
 [  5]   3.00-4.00   sec   112 MBytes   942 Mbits/sec    0    634 KBytes
 [  5]   4.00-5.00   sec   111 MBytes   931 Mbits/sec    0    634 KBytes
 [  5]   5.00-6.00   sec   112 MBytes   943 Mbits/sec    0    667 KBytes
-^C[  5]   6.00-6.31   sec  33.8 MBytes   927 Mbits/sec    0    667 KBytes
+[  5]   6.00-6.31   sec  33.8 MBytes   927 Mbits/sec    0    667 KBytes
 
 ```
 

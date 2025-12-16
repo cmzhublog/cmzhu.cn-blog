@@ -48,3 +48,13 @@ WHERE TABLE_SCHEMA = '<数据库名>'
 
 ```
 
+3、生成删除库中所有表的语句列表
+
+```sql
+SELECT CONCAT('DROP TABLE IF EXISTS ', TABLE_NAME, ';') AS drop_statement
+FROM INFORMATION_SCHEMA.TABLES
+WHERE TABLE_SCHEMA = '<数据库名>';
+```
+
+
+

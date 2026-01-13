@@ -56,5 +56,24 @@ FROM INFORMATION_SCHEMA.TABLES
 WHERE TABLE_SCHEMA = '<数据库名>';
 ```
 
+4、查询库中容量（表+索引）超过10G 的表
+
+```sql
+SELECT
+    table_schema                             AS db_name,
+    table_name,
+    engine,
+    table_rows,
+    ROUND((data_length + index_length) / 1024 / 1024 / 1024, 2) AS total_gb,
+    ROUND(data_length / 1024 / 1024 / 1024, 2)                 AS data_gb,
+    ROUND(index_length / 1024 / 1024 / 1024, 2)                AS index_gb,
+    ROUND(data_free / 1024 / 1024 / 1024, 2)                   AS free_gb
+FROM information_schema.tables
+WHERE
+    table_schema NOT IN ('information_schema','mysql','performance_schema','sys')
+    AND (data_length + index_length) >= 1024 * 1024 * 1024
+ORDER BY (data_length + index_length) DESC;
+```
+
 
 

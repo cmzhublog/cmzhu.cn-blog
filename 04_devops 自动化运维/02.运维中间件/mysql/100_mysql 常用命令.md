@@ -75,5 +75,9 @@ WHERE
 ORDER BY (data_length + index_length) DESC;
 ```
 
+5、 清除分区表中的某一个分区
 
+```mysql
+ ALTER TABLE 表名 DROP PARTITION 分区名;
+```
 

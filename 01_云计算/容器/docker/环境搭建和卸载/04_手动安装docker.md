@@ -80,3 +80,49 @@ $ systemctl restart docker
 $ wget https://github.com/docker/compose/releases/download/v2.37.2/docker-compose-linux-x86_64 -O /usr/bin/docker-compose && chmod +x /usr/bin/docker-compose
 ```
 
+6、 完整安装脚本
+
+```bash
+export DOCKER_VERSION=v29.4.2
+
+cd $(mktemp -d)
+
+wget https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKER_VERSION/v/}.tgz -O docker-ce.tgz
+export DOCKER_VERSION=v29.4.2
+
+tar zxvf docker-${DOCKER_VERSION/v/}.tgz -C .
+cp docker/* /usr/bin
+
+cat > /etc/systemd/system/docker.service << EOF
+[Unit]
+Description=Docker Application Container Engine
+Documentation=https://docs.docker.com
+After=network-online.target firewalld.service
+Wants=network-online.target
+
+
+[Service]
+Type=notify
+ExecStart=/usr/bin/dockerd
+ExecReload=/bin/kill -s HUP $MAINPID
+LimitNOFILE=infinity
+LimitNPROC=infinity
+TimeoutStartSec=0
+Delegate=yes
+KillMode=process
+Restart=on-failure
+StartLimitBurst=3
+StartLimitInterval=60s
+
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+chmod +x /etc/systemd/system/docker.service
+systemctl daemon-reload
+systemctl enable --now docker.service
+docker ps 
+
+```
+

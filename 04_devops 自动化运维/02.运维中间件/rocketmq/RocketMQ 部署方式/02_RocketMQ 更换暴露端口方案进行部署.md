@@ -57,6 +57,69 @@ networks:
 
 ```
 
+5.4 版本启动参数
+
+```yaml
+version: '3.8'
+services:
+  namesrv:
+    image: apache/rocketmq:5.4.0
+    container_name: rmqnamesrv
+    ports:
+      - 9876:9876
+    networks:
+      - rocketmq
+    command:  sh mqnamesrv
+    volumes:
+      - ${PWD}/broker/broker.conf:/home/rocketmq/rocketmq-5.4.0/conf/broker.conf
+      - ${PWD}/namesrv/logs:/home/rocketmq/logs
+      - ${PWD}/namesrv/store:/home/rocketmq/store
+    security_opt:
+      - seccomp=unconfined
+  broker:
+    image: apache/rocketmq:5.4.0
+    container_name: rmqbroker
+    volumes:
+      - ${PWD}/broker/broker.conf:/home/rocketmq/rocketmq-5.4.0/conf/broker.conf
+      - ${PWD}/broker/logs:/home/rocketmq/logs
+      - ${PWD}/broker/store:/home/rocketmq/store
+    ports:
+      - 10911:10911
+      - 10909:10909
+    environment:
+      - NAMESRV_ADDR=namesrv:9876
+      - JAVA_OPT_EXT=-Xms128m -Xmx1g
+    depends_on:
+      - namesrv
+    networks:
+      - rocketmq
+    command: sh mqbroker -c /home/rocketmq/rocketmq-5.4.0/conf/broker.conf
+    security_opt:
+      - seccomp=unconfined
+  proxy:
+    image: apache/rocketmq:5.4.0
+    container_name: rmqproxy
+    networks:
+      - rocketmq
+    depends_on:
+      - broker
+      - namesrv
+    ports:
+      - 8080:8080
+      - 8081:8081
+    restart: on-failure
+    environment:
+      - NAMESRV_ADDR=namesrv:9876
+    command: sh mqproxy
+    security_opt:
+      - seccomp=unconfined
+networks:
+  rocketmq:
+    driver: bridge
+```
+
+
+
 调整了broker 的配置文件， 和启动命令； 以及调整了需要暴露的端口信息；
 
 broker.conf 配置文件如下

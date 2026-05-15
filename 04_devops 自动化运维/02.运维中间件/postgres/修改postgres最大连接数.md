@@ -1,5 +1,7 @@
 ## postgres 最大连接数
 
+> 不论使用哪一种方式修改，都需要重启postgres 才会生效
+
 postgres 默认的 max_connections=100; 但是在实际的使用过程中,postgres 可能会超过这个值;这时就需要修改这个配置
 
 修改方案1(临时修改- 容器重启,自动恢复为默认值)
@@ -14,6 +16,8 @@ vim /var/lib/postgresql/data/postgresql.conf
 
 修改max_connections 的值为需要的值
 ```
+
+
 
 ### 查询postgres 连接socket
 

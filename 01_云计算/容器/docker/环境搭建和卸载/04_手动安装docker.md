@@ -88,9 +88,8 @@ export DOCKER_VERSION=v29.4.2
 cd $(mktemp -d)
 
 wget https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKER_VERSION/v/}.tgz -O docker-ce.tgz
-export DOCKER_VERSION=v29.4.2
 
-tar zxvf docker-${DOCKER_VERSION/v/}.tgz -C .
+tar zxvf docker-ce.tgz -C .
 cp docker/* /usr/bin
 
 cat > /etc/systemd/system/docker.service << EOF
@@ -123,6 +122,8 @@ chmod +x /etc/systemd/system/docker.service
 systemctl daemon-reload
 systemctl enable --now docker.service
 docker ps 
+
+wget https://github.com/docker/compose/releases/download/v2.37.2/docker-compose-linux-x86_64 -O /usr/bin/docker-compose && chmod +x /usr/bin/docker-compose
 
 ```
 

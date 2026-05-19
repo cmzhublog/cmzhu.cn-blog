@@ -52,6 +52,66 @@ StartLimitInterval=60s
 WantedBy=multi-user.target
 ```
 
+3、配置/etc/docker/daemon.json
+
+```json
+{
+    "data-root": "/var/lib/docker",
+    "exec-opts": [
+        "native.cgroupdriver=systemd"
+    ],
+    "insecure-registries": [
+        "0.0.0.0/0",
+        "gcr.io"
+    ],
+    "live-restore": true,
+    "log-driver": "json-file",
+    "log-level": "warn",
+    "log-opts": {
+        "max-file": "3",
+        "max-size": "10m"
+    },
+    "max-concurrent-downloads": 10,
+    "registry-mirrors": [
+        "https://bxsfpjcb.mirror.aliyuncs.com"
+    ],
+    "runtimes": {
+        "nvidia": {
+            "args": [],
+            "path": "nvidia-container-runtime"
+        }
+    }
+}
+```
+
+```bash
+$ mkdir -p /etc/docker && cat > /etc/docker/daemon.json << EOF 
+{
+    "data-root": "/var/lib/docker",
+    "exec-opts": [
+        "native.cgroupdriver=systemd"
+    ],
+    "insecure-registries": [
+        "0.0.0.0/0",
+        "gcr.io"
+    ],
+    "live-restore": true,
+    "log-driver": "json-file",
+    "log-level": "warn",
+    "log-opts": {
+        "max-file": "3",
+        "max-size": "50m"
+    },
+    "max-concurrent-downloads": 10,
+    "registry-mirrors": [
+        "https://bxsfpjcb.mirror.aliyuncs.com"
+    ]
+}
+EOF
+```
+
+
+
 
 
 3、重新加载systemd

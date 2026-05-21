@@ -114,6 +114,8 @@ sed -i "s#;\[include\]#\[include\]#g"  /etc/supervisord.conf
 
 sed -i "s#;files = relative/directory/\*\.ini#files = /etc/supervisord\.d/\*\.ini#g" /etc/supervisord.conf 
 
+sed -i "s#tmp#etc#g" /etc/supervisord.conf 
+
 systemctl restart supervisord
 ```
 

@@ -118,4 +118,3 @@ sed -i "s#tmp#etc#g" /etc/supervisord.conf
 
 systemctl restart supervisord
 ```
-

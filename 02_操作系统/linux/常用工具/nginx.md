@@ -1,5 +1,11 @@
 ## nginx 升级版本脚本
 
+用于漏洞修复:
+
+[ CVE-2026-42945](https://avd.aliyun.com/detail/CVE-2026-42945?spm=5176.2020520154.sas.389.1e1aJrR7JrR75D&lang=zh)
+
+
+
 ```bash
 ## 公共函数
 function job_success(){
@@ -59,6 +65,10 @@ function upload_nginx(){
         wget https://nginx.org/packages/rhel/8/x86_64/RPMS/nginx-1.30.3-1.el8.ngx.x86_64.rpm  \
             && yum localinstall -y   nginx-1.30.3-1.el8.ngx.x86_64.rpm \
             && rm -f nginx-1.30.3-1.el8.ngx.x86_64.rpm
+        wget https://dl.marmotte.net/rpms/redhat/el8/x86_64/nginx-1.30.1-1.el8.ex2/nginx-filesystem-1.30.1-1.el8.ex2.noarch.rpm \
+            && yum localinstall -y nginx-filesystem-1.30.1-1.el8.ex2.noarch.rpm \
+            && rm -f nginx-filesystem-1.30.1-1.el8.ex2.noarch.rpm
+            
     fi
 }
 
